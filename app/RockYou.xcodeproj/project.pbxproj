@@ -8,26 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		4F5470BD28EFB1BD00C0F673 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */; };
+		4F568BF828FF958C0092D287 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F568BF728FF958C0092D287 /* GoogleService-Info.plist */; };
+		4F9DB32F28F64C7700B2C338 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DB32E28F64C7700B2C338 /* MainViewController.swift */; };
+		4FF1ED1A28FC377300F5458D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1ED1928FC377300F5458D /* MapViewController.swift */; };
 		4FFF168028ED0514003ADFAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF167F28ED0514003ADFAA /* AppDelegate.swift */; };
 		4FFF168228ED0514003ADFAA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF168128ED0514003ADFAA /* SceneDelegate.swift */; };
-		4FFF168428ED0514003ADFAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF168328ED0514003ADFAA /* ViewController.swift */; };
+		4FFF168428ED0514003ADFAA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF168328ED0514003ADFAA /* LoginViewController.swift */; };
 		4FFF168728ED0514003ADFAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FFF168528ED0514003ADFAA /* Main.storyboard */; };
 		4FFF168928ED0514003ADFAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FFF168828ED0514003ADFAA /* Assets.xcassets */; };
 		4FFF168C28ED0514003ADFAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FFF168A28ED0514003ADFAA /* LaunchScreen.storyboard */; };
 		4FFF169428ED1069003ADFAA /* WLITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF169328ED1069003ADFAA /* WLITextField.swift */; };
+		9F4AC603DA2FB08789A3D6CC /* Pods_RockYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E07FF484EFDEB11990FB5286 /* Pods_RockYou.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4F568BF728FF958C0092D287 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4F9DB32E28F64C7700B2C338 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4FF1ED1928FC377300F5458D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4FFF167C28ED0514003ADFAA /* RockYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FFF167F28ED0514003ADFAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FFF168128ED0514003ADFAA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4FFF168328ED0514003ADFAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4FFF168328ED0514003ADFAA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4FFF168628ED0514003ADFAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FFF168828ED0514003ADFAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FFF168B28ED0514003ADFAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FFF168D28ED0514003ADFAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FFF169328ED1069003ADFAA /* WLITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLITextField.swift; sourceTree = "<group>"; };
+		D0EF711093D9FCDD9B80B538 /* Pods-RockYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RockYou.debug.xcconfig"; path = "Target Support Files/Pods-RockYou/Pods-RockYou.debug.xcconfig"; sourceTree = "<group>"; };
+		E07FF484EFDEB11990FB5286 /* Pods_RockYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RockYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EABC7D9D060F58CB9A324B23 /* Pods-RockYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RockYou.release.xcconfig"; path = "Target Support Files/Pods-RockYou/Pods-RockYou.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +45,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F4AC603DA2FB08789A3D6CC /* Pods_RockYou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F568BF428FF7FBB0092D287 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4FFF168328ED0514003ADFAA /* LoginViewController.swift */,
+				4FF1ED1928FC377300F5458D /* MapViewController.swift */,
+				4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */,
+				4F9DB32E28F64C7700B2C338 /* MainViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4F568BF528FF7FDA0092D287 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4FFF168528ED0514003ADFAA /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4F568BF628FF7FEF0092D287 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				4FFF169328ED1069003ADFAA /* WLITextField.swift */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
 		4FFF167328ED0514003ADFAA = {
 			isa = PBXGroup;
 			children = (
 				4FFF167E28ED0514003ADFAA /* RockYou */,
 				4FFF167D28ED0514003ADFAA /* Products */,
+				80A3F2E095D870BDC441F20D /* Pods */,
+				5966EE89A09C5777BEA3C04D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,15 +102,33 @@
 			children = (
 				4FFF167F28ED0514003ADFAA /* AppDelegate.swift */,
 				4FFF168128ED0514003ADFAA /* SceneDelegate.swift */,
-				4FFF169328ED1069003ADFAA /* WLITextField.swift */,
-				4FFF168328ED0514003ADFAA /* ViewController.swift */,
-				4FFF168528ED0514003ADFAA /* Main.storyboard */,
-				4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */,
+				4F568BF628FF7FEF0092D287 /* helper */,
+				4F568BF528FF7FDA0092D287 /* View */,
+				4F568BF428FF7FBB0092D287 /* ViewController */,
 				4FFF168828ED0514003ADFAA /* Assets.xcassets */,
 				4FFF168A28ED0514003ADFAA /* LaunchScreen.storyboard */,
 				4FFF168D28ED0514003ADFAA /* Info.plist */,
+				4F568BF728FF958C0092D287 /* GoogleService-Info.plist */,
 			);
 			path = RockYou;
+			sourceTree = "<group>";
+		};
+		5966EE89A09C5777BEA3C04D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E07FF484EFDEB11990FB5286 /* Pods_RockYou.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80A3F2E095D870BDC441F20D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D0EF711093D9FCDD9B80B538 /* Pods-RockYou.debug.xcconfig */,
+				EABC7D9D060F58CB9A324B23 /* Pods-RockYou.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,9 +138,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4FFF169028ED0514003ADFAA /* Build configuration list for PBXNativeTarget "RockYou" */;
 			buildPhases = (
+				A5DA02FB1341FA654DD9693B /* [CP] Check Pods Manifest.lock */,
 				4FFF167828ED0514003ADFAA /* Sources */,
 				4FFF167928ED0514003ADFAA /* Frameworks */,
 				4FFF167A28ED0514003ADFAA /* Resources */,
+				0B19D854DDFADD7FDD0A5942 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FFF168C28ED0514003ADFAA /* LaunchScreen.storyboard in Resources */,
+				4F568BF828FF958C0092D287 /* GoogleService-Info.plist in Resources */,
 				4FFF168928ED0514003ADFAA /* Assets.xcassets in Resources */,
 				4FFF168728ED0514003ADFAA /* Main.storyboard in Resources */,
 			);
@@ -139,16 +200,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0B19D854DDFADD7FDD0A5942 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RockYou/Pods-RockYou-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RockYou/Pods-RockYou-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RockYou/Pods-RockYou-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5DA02FB1341FA654DD9693B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RockYou-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4FFF167828ED0514003ADFAA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FFF168428ED0514003ADFAA /* ViewController.swift in Sources */,
+				4F9DB32F28F64C7700B2C338 /* MainViewController.swift in Sources */,
+				4FFF168428ED0514003ADFAA /* LoginViewController.swift in Sources */,
 				4FFF168028ED0514003ADFAA /* AppDelegate.swift in Sources */,
 				4FFF169428ED1069003ADFAA /* WLITextField.swift in Sources */,
 				4FFF168228ED0514003ADFAA /* SceneDelegate.swift in Sources */,
 				4F5470BD28EFB1BD00C0F673 /* SignUpViewController.swift in Sources */,
+				4FF1ED1A28FC377300F5458D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +395,7 @@
 		};
 		4FFF169128ED0514003ADFAA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0EF711093D9FCDD9B80B538 /* Pods-RockYou.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -318,6 +424,7 @@
 		};
 		4FFF169228ED0514003ADFAA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EABC7D9D060F58CB9A324B23 /* Pods-RockYou.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

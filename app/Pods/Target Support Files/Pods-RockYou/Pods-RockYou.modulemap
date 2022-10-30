@@ -1,0 +1,6 @@
+framework module Pods_RockYou {
+  umbrella header "Pods-RockYou-umbrella.h"
+
+  export *
+  module * { export * }
+}
