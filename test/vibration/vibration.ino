@@ -1,4 +1,4 @@
-int vib_pin=4;
+int vib_pin=2;
 
 void setup() {
   pinMode(vib_pin,INPUT);
