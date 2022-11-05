@@ -20,14 +20,14 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "REPLACE_WITH_YOUR_SSID"
-#define WIFI_PASSWORD "REPLACE_WITH_YOUR_PASSWORD"
+#define WIFI_SSID "Jaesung’s iPhone"
+#define WIFI_PASSWORD "87654321"
 
 // Insert Firebase project API Key
-#define API_KEY "REPLACE_WITH_YOUR_FIREBASE_PROJECT_API_KEY"
+#define API_KEY "AIzaSyCYI5hrkkNjjQUB11bYCvdvfHHNmHUvNYc"
 
 // Insert RTDB URLefine the RTDB URL */
-#define DATABASE_URL "REPLACE_WITH_YOUR_FIREBASE_DATABASE_URL" 
+#define DATABASE_URL "https://rock-u-9c940-default-rtdb.firebaseio.com/" 
 
 //Define Firebase Data object
 FirebaseData fbdo;
@@ -53,10 +53,10 @@ void setup(){
   Serial.println();
 
   /* Assign the api key (required) */
-  config.api_key = AIzaSyCYI5hrkkNjjQUB11bYCvdvfHHNmHUvNYc;
+  config.api_key = API_KEY;
 
   /* Assign the RTDB URL (required) */
-  config.database_url = https://rock-u-9c940-default-rtdb.firebaseio.com/;
+  config.database_url = DATABASE_URL;
 
   /* Sign up */
   if (Firebase.signUp(&config, &auth, "", "")){
@@ -75,29 +75,34 @@ void setup(){
 }
 
 void loop(){
+  //파이어베이스가 준비되고 로그인이 되어있고
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 15000 || sendDataPrevMillis == 0)){
     sendDataPrevMillis = millis();
     // Write an Int number on the database path test/int
     if (Firebase.RTDB.setInt(&fbdo, "test/int", count)){
+      Serial.println("cccc");
       Serial.println("PASSED");
       Serial.println("PATH: " + fbdo.dataPath());
       Serial.println("TYPE: " + fbdo.dataType());
     }
     else {
+      Serial.println("dddd");
       Serial.println("FAILED");
       Serial.println("REASON: " + fbdo.errorReason());
     }
     count++;
     
     // Write an Float number on the database path test/float
-    if (Firebase.RTDB.setFloat(&fbdo, "test/float", 0.01 + random(0,100))){
-      Serial.println("PASSED");
-      Serial.println("PATH: " + fbdo.dataPath());
-      Serial.println("TYPE: " + fbdo.dataType());
-    }
-    else {
-      Serial.println("FAILED");
-      Serial.println("REASON: " + fbdo.errorReason());
-    }
+//    if (Firebase.RTDB.setFloat(&fbdo, "test/float", 0.01 + random(0,100))){ㅉ
+//      Serial.println("eeee");
+//      Serial.println("PASSED");
+//      Serial.println("PATH: " + fbdo.dataPath());
+//      Serial.println("TYPE: " + fbdo.dataType());
+//    }
+//    else {
+//      Serial.println("ffff");
+//      Serial.println("FAILED");
+//      Serial.println("REASON: " + fbdo.errorReason());
+//    }
   }
 }
