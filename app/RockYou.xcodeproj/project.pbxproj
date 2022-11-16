@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F525D61290E75A6007A76FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F525D60290E75A6007A76FF /* GoogleService-Info.plist */; };
 		4F5470BD28EFB1BD00C0F673 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */; };
-		4F568BF828FF958C0092D287 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F568BF728FF958C0092D287 /* GoogleService-Info.plist */; };
 		4F9DB32F28F64C7700B2C338 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DB32E28F64C7700B2C338 /* MainViewController.swift */; };
 		4FF1ED1A28FC377300F5458D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1ED1928FC377300F5458D /* MapViewController.swift */; };
 		4FFF168028ED0514003ADFAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF167F28ED0514003ADFAA /* AppDelegate.swift */; };
@@ -22,8 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F525D60290E75A6007A76FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		4F568BF728FF958C0092D287 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F9DB32E28F64C7700B2C338 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4FF1ED1928FC377300F5458D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4FFF167C28ED0514003ADFAA /* RockYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +108,7 @@
 				4FFF168828ED0514003ADFAA /* Assets.xcassets */,
 				4FFF168A28ED0514003ADFAA /* LaunchScreen.storyboard */,
 				4FFF168D28ED0514003ADFAA /* Info.plist */,
-				4F568BF728FF958C0092D287 /* GoogleService-Info.plist */,
+				4F525D60290E75A6007A76FF /* GoogleService-Info.plist */,
 			);
 			path = RockYou;
 			sourceTree = "<group>";
@@ -127,7 +127,6 @@
 				D0EF711093D9FCDD9B80B538 /* Pods-RockYou.debug.xcconfig */,
 				EABC7D9D060F58CB9A324B23 /* Pods-RockYou.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -192,7 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FFF168C28ED0514003ADFAA /* LaunchScreen.storyboard in Resources */,
-				4F568BF828FF958C0092D287 /* GoogleService-Info.plist in Resources */,
+				4F525D61290E75A6007A76FF /* GoogleService-Info.plist in Resources */,
 				4FFF168928ED0514003ADFAA /* Assets.xcassets in Resources */,
 				4FFF168728ED0514003ADFAA /* Main.storyboard in Resources */,
 			);

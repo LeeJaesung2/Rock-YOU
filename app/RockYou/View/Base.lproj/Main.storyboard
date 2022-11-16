@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rock-You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RZ-pf-sGy">
-                                <rect key="frame" x="20" y="57" width="98" height="27"/>
+                                <rect key="frame" x="150" y="57" width="98" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -196,7 +196,7 @@
                             <constraint firstItem="HKL-YN-UCF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KyS-c1-61m"/>
                             <constraint firstItem="HKL-YN-UCF" firstAttribute="top" secondItem="DI8-nz-UIW" secondAttribute="bottom" constant="30" id="SUB-1A-RaA"/>
                             <constraint firstItem="HKL-YN-UCF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Uve-uC-Y0D"/>
-                            <constraint firstItem="1RZ-pf-sGy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="YHz-px-Y9l"/>
+                            <constraint firstItem="1RZ-pf-sGy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="YHz-px-Y9l"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HKL-YN-UCF" secondAttribute="bottom" id="ez3-fK-n73"/>
                             <constraint firstItem="1RZ-pf-sGy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="hmC-l1-RMf"/>
                             <constraint firstItem="ert-UB-Ob0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="lqu-aN-TO4"/>
@@ -414,7 +414,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rock-You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2t-hd-guC">
-                                <rect key="frame" x="20" y="57" width="98" height="27"/>
+                                <rect key="frame" x="150" y="57" width="98" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -651,18 +651,35 @@
                                     <constraint firstItem="B02-hK-ITI" firstAttribute="top" secondItem="Fyp-On-QDa" secondAttribute="top" constant="70" id="oLk-vv-Kjb"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrp-kq-oRN">
+                                <rect key="frame" x="16" y="57" width="20" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="NqQ-iS-WeR"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="VDU-jK-AjS"/>
+                                    <constraint firstAttribute="width" constant="20" id="h4h-Br-xqw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="tintColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="chevron.backward" catalog="system"/>
+                                <connections>
+                                    <action selector="backButtonDidTap:" destination="Ece-og-deY" eventType="touchUpInside" id="cu3-ek-CMD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fWJ-Ta-wPS"/>
                         <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Qrp-kq-oRN" firstAttribute="top" secondItem="fWJ-Ta-wPS" secondAttribute="top" constant="10" id="18D-5y-4Vu"/>
                             <constraint firstItem="Fyp-On-QDa" firstAttribute="trailing" secondItem="fWJ-Ta-wPS" secondAttribute="trailing" id="3w7-nZ-HBO"/>
                             <constraint firstItem="oAc-v2-VoB" firstAttribute="leading" secondItem="fWJ-Ta-wPS" secondAttribute="leading" constant="20" id="8CQ-Mf-kdn"/>
                             <constraint firstItem="G2t-hd-guC" firstAttribute="top" secondItem="fWJ-Ta-wPS" secondAttribute="top" constant="10" id="AZ8-zH-0gr"/>
                             <constraint firstItem="fWJ-Ta-wPS" firstAttribute="bottom" secondItem="Fyp-On-QDa" secondAttribute="bottom" id="Am8-rM-Yzg"/>
                             <constraint firstItem="EbP-Ej-Yqn" firstAttribute="leading" secondItem="fWJ-Ta-wPS" secondAttribute="leading" constant="20" id="HQl-ON-G4n"/>
                             <constraint firstItem="oAc-v2-VoB" firstAttribute="top" secondItem="G2t-hd-guC" secondAttribute="bottom" constant="20" id="IhQ-XK-VBO"/>
-                            <constraint firstItem="G2t-hd-guC" firstAttribute="leading" secondItem="fWJ-Ta-wPS" secondAttribute="leading" constant="20" id="XYX-v0-lpm"/>
+                            <constraint firstItem="G2t-hd-guC" firstAttribute="leading" secondItem="fWJ-Ta-wPS" secondAttribute="leading" constant="150" id="XYX-v0-lpm"/>
                             <constraint firstItem="EbP-Ej-Yqn" firstAttribute="top" secondItem="oAc-v2-VoB" secondAttribute="bottom" constant="15" id="YIV-lW-yk1"/>
+                            <constraint firstItem="Qrp-kq-oRN" firstAttribute="leading" secondItem="fWJ-Ta-wPS" secondAttribute="leading" constant="16" id="ZJa-Ao-9Vg"/>
                             <constraint firstItem="Fyp-On-QDa" firstAttribute="top" secondItem="EbP-Ej-Yqn" secondAttribute="bottom" constant="30" id="eeU-01-1yD"/>
                             <constraint firstItem="Fyp-On-QDa" firstAttribute="leading" secondItem="fWJ-Ta-wPS" secondAttribute="leading" id="wwB-FD-Kgl"/>
                         </constraints>
@@ -682,6 +699,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="eye" catalog="system" width="128" height="79"/>
         <image name="eye.slash.fill" catalog="system" width="128" height="85"/>
@@ -695,6 +713,9 @@
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

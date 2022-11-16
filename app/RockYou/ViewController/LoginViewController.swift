@@ -94,8 +94,8 @@ class LoginViewController: UIViewController {
                     //print("Document data: \(dataDescription)")
 
                 } else {
-                    print("Document does not exist")
-                }
+                    self.ShowAlert(alertmsg: "등록되지 않은 사용자입니다")
+                 }
             }
         }
     }

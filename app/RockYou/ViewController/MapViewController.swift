@@ -12,6 +12,14 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document(userName)
+        
+        ref.getDocument { (document, error) in
+            // 존재 한다면
+            if let document = document, document.exists {
+                // 비밀번호 필드만 가져오기
+                guard let property = document.get("password") else { return }
         // Do any additional setup after loading the view.
     }
     
