@@ -5,9 +5,10 @@
 //_________bluetooth________________
 //bluethooth library
 #include "BluetoothSerial.h"
+BluetoothSerial serialBT;
 
 //check bluetooth enabled
-#if !define(CONFIG_BT-ENABLED) || !define(CONFIG_BLUEDROID_ENABLED)
+#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 #endif
 
@@ -39,8 +40,8 @@ unsigned long sendDataPrevMillis = 0; //이전 데이터 전송 시간
 bool signupOK = false; //로그인 여부 확인
 bool lock = false; //잠금여부
 bool conn_bluetooth = false; //블루투스 연결 여부
-String status = 0; //상태  nomal = 0, shock = 1, steel = 2, drive = 3
-int vib //충격 감지  non = 0, shock = 1
+int status = 0; //상태  nomal = 0, shock = 1, steel = 2, drive = 3
+int vib; //충격 감지  non = 0, shock = 1
 
 
 //_________wifi________________
@@ -49,7 +50,7 @@ int vib //충격 감지  non = 0, shock = 1
 #define WIFI_PASSWORD "87654321"
 
 //________function declaration________________
-void setData(String path, int data)
+void setData(String path, int data);
 
 void setup(){
   #if(DEBUG)
@@ -76,7 +77,7 @@ void setup(){
     Serial.println();
   #endif
 
-  BluetoothSerial.begin("Rock_YOU") //named "Rock_YOU" bluetooth begin
+  //serialBT.begin("Rock_YOU"); //named "Rock_YOU" bluetooth begin
   #if(DEBUG)
     Serial.println("The device started, now you can pair it with bluetooth!");
   #endif
@@ -106,7 +107,8 @@ void setup(){
 }
 
 void loop(){
-  val = digitalRead(vib_pin); //get vibration value
+  vib = digitalRead(vib_pin); //get vibration value
+  Serial.println(vib);
   setData("test/int", 10);
 }
 
@@ -134,4 +136,5 @@ void setData(String path, int data){
         Serial.println("REASON: " + fbdo.errorReason());
       #endif
     }
+  }
 }
