@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <Firebase_ESP_Client.h>
+#include <TinyGPSPlus.h>
 
 //_________bluetooth________________
 //bluethooth library
@@ -30,19 +31,33 @@ FirebaseConfig config;
 //DEBUG mode
 #define DEBUG true
 
-#define id "qf6r5zOcY4jXmmcniqX9" //PBMS identication key
+#define bicycleId "qf6r5zOcY4jXmmcniqX9" //PBMS identication key
 
 //GPIO pin
-#define vib_pin 2 //2번 : 충격센서
+#define vib_pin 2 //2 : shock sensor
 
 //global variables
-unsigned long sendDataPrevMillis = 0; //이전 데이터 전송 시간
-bool signupOK = false; //로그인 여부 확인
-bool lock = false; //잠금여부
-bool conn_bluetooth = false; //블루투스 연결 여부
-int status = 0; //상태  nomal = 0, shock = 1, steel = 2, drive = 3
-int vib; //충격 감지  non = 0, shock = 1
+unsigned long sendDataPrevMillis; //last data send time
+bool signupOK; //firebase login
+bool lock;
+bool conn_bluetooth;
+int pastvib; //sensing shock value  safe = 0, shock = 1
+int status;
 
+typedef enum {
+  SAFE,
+  SHOCK,
+  STEEL,
+  DRIVE
+} bicycleStatus;
+
+//////////C언어에서는 안될것 같은디
+typedef enum{
+  ALTITUDE = "bicycle/"+bicycleId+"/gps/altitude",
+  LATITUDE = "bicycle/"+bicycleId+"/gps/latitude",
+  LOCK = "bicycle/"+bicycleId+"/lock",
+  STATUS = "bicycle/"+bicycleId+"/status"
+} FirebasePath;
 
 //_________wifi________________
 // set wifi
@@ -50,21 +65,53 @@ int vib; //충격 감지  non = 0, shock = 1
 #define WIFI_PASSWORD "87654321"
 
 //________function declaration________________
-void setData(String path, int data);
+void initValue();
+void connWifi();
+void connBluetooth()
+void setFirebase();
+void updateFirebase(String path, int data);
+int getShockValue();
 
 void setup(){
+  initValue();
   #if(DEBUG)
     Serial.begin(115200);
   #endif
   //vibration sensor setup
   pinMode(vib_pin, INPUT);
   
+  connWifi();
+  connBluetooth();
+  setFirebase();
+
+  
+
+}
+
+void loop(){
+  patvib = getShockValue();
+  updateFirebase("test/int", 10);
+}
+
+
+/*function here*/
+
+void initValue(){
+  sendDataPrevMillis = 0;
+  signupOK = false;
+  lock = false;
+  conn_bluetooth = false;
+  pastvib = 0;
+  status = SAFE;
+}
+
+void connWifi(){
   //conn wifi
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   #if(DEBUG)
     Serial.print("Connecting to Wi-Fi");
   #endif
-  while (WiFi.status() != WL_CONNECTED){
+  while (WiFi.status() != 3){
     #if(DEBUG)
       Serial.print(".");
     #endif
@@ -76,12 +123,16 @@ void setup(){
     Serial.println(WiFi.localIP());
     Serial.println();
   #endif
+}
 
-  //serialBT.begin("Rock_YOU"); //named "Rock_YOU" bluetooth begin
+void connBluetooth(){
+  serialBT.begin("Rock_YOU"); //named "Rock_YOU" bluetooth begin
   #if(DEBUG)
     Serial.println("The device started, now you can pair it with bluetooth!");
   #endif
+}
 
+void setFirebase(){
   // firebase key & url
   config.api_key = API_KEY;
   config.database_url = DATABASE_URL;
@@ -106,35 +157,39 @@ void setup(){
   Firebase.reconnectWiFi(true);
 }
 
-void loop(){
-  vib = digitalRead(vib_pin); //get vibration value
-  Serial.println(vib);
-  setData("test/int", 10);
+void updateFirebase(String path, int data){
+  
+  // Write an data on the database path
+  if (Firebase.RTDB.setInt(&fbdo, path, data)){
+  #if(DEBUG)
+    Serial.println("PASSED");
+    Serial.println("PATH: " + fbdo.dataPath());
+    Serial.println("TYPE: " + fbdo.dataType());
+  #endif
+  }
+  else {
+  #if(DEBUG)
+    Serial.println("FAILED");
+    Serial.println("REASON: " + fbdo.errorReason());
+  #endif
+  }
+  
 }
 
-
-/*path = "bicycle/qf6r5zOcY4jXmmcniqX9/gps/altitude"
-path = "bicycle/qf6r5zOcY4jXmmcniqX9/gps/latitude"
-path = "bicycle/qf6r5zOcY4jXmmcniqX9/lock"
-path = "bicycle/qf6r5zOcY4jXmmcniqX9/status"
-*/
-void setData(String path, int data){
-  //파이어베이스가 준비되고 로그인이 되어있고 너무 많은 데이터를 보내지 않기 위해 시간 측정
-  if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 15000 || sendDataPrevMillis == 0)){
+int getShockValue(){
+  //get shock value every 1.0s
+  if(millis() - sendDataPrevMillis > 10000 || sendDataPrevMillis == 0){
     sendDataPrevMillis = millis();
-    // Write an data on the database path
-    if (Firebase.RTDB.setInt(&fbdo, path, data)){
-      #if(DEBUG)
-        Serial.println("PASSED");
-        Serial.println("PATH: " + fbdo.dataPath());
-        Serial.println("TYPE: " + fbdo.dataType());
-      #endif
+    int vib = digitalRead(vib_pin); //get vibration value
+    //if shock value change to 1 from 0
+    if(pastvib == 0 & vib == 1){
+      status = SHOCK;
     }
-    else {
-      #if(DEBUG)
-        Serial.println("FAILED");
-        Serial.println("REASON: " + fbdo.errorReason());
-      #endif
-    }
+    pastvib = vib;
   }
+  return pastvib;
+}
+
+void getGPSValue(){
+
 }
