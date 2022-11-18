@@ -52,13 +52,13 @@ typedef enum {
 } bicycleStatus;
 
 //////////C언어에서는 안될것 같은디
-typedef enum{
+/*typedef enum{
   ALTITUDE = "bicycle/"+bicycleId+"/gps/altitude",
   LATITUDE = "bicycle/"+bicycleId+"/gps/latitude",
   LOCK = "bicycle/"+bicycleId+"/lock",
-  STATUS = "bicycle/"+bicycleId+"/status"
+  BICYCLESTATUS = "bicycle/"+bicycleId+"/status"
 } FirebasePath;
-
+*/
 //_________wifi________________
 // set wifi
 #define WIFI_SSID "Jaesung’s iPhone"
@@ -67,7 +67,7 @@ typedef enum{
 //________function declaration________________
 void initValue();
 void connWifi();
-void connBluetooth()
+void connBluetooth();
 void setFirebase();
 void updateFirebase(String path, int data);
 int getShockValue();
@@ -89,7 +89,7 @@ void setup(){
 }
 
 void loop(){
-  patvib = getShockValue();
+  pastvib = getShockValue();
   updateFirebase("test/int", 10);
 }
 
