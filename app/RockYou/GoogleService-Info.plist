@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>132329958662-768d2eaairs5gv3j4068glra6miqidrs.apps.googleusercontent.com</string>
+	<string>216410961430-79sidifqpvrkfhlm85fapon5batepb6r.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.132329958662-768d2eaairs5gv3j4068glra6miqidrs</string>
+	<string>com.googleusercontent.apps.216410961430-79sidifqpvrkfhlm85fapon5batepb6r</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAt5OTkT4yZLVrwODsdWVGVqXoZiDdZDMo</string>
+	<string>AIzaSyArHSTriL5FRqfStAbYf6fGVdjpDOrGULM</string>
 	<key>GCM_SENDER_ID</key>
-	<string>132329958662</string>
+	<string>216410961430</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.geun0196.RockYou</string>
 	<key>PROJECT_ID</key>
-	<string>customlogindemo-18134</string>
+	<string>rock-u-9c940</string>
 	<key>STORAGE_BUCKET</key>
-	<string>customlogindemo-18134.appspot.com</string>
+	<string>rock-u-9c940.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:132329958662:ios:15d0c622ab5678fb614287</string>
+	<string>1:216410961430:ios:132b392d4bb425a07c6737</string>
 </dict>
 </plist>

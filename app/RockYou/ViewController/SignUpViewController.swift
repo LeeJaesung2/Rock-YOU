@@ -81,8 +81,6 @@ class SignUpViewController: UIViewController {
                     // user 데이터 생성 성공
                     let db = Firestore.firestore()
                     db.collection("users").document(userName).setData(["userName":userName, "password":password, "phoneNumber":phoneNumber, "uid":result!.user.uid]) { (error) in
-                    
-                    //db.collection("users").addDocument(data: ["userName":userName, "phoneNumber":phoneNumber, "uid":result!.user.uid]) { (error) in
                         
                         if error != nil {
                             self.ShowAlert(alertmsg: "Error saving user data")
@@ -108,6 +106,10 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    //뒤로가기 버튼
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     // MARK: - Show alert controller
     func ShowAlert(alertmsg: String) {
         // create the alert

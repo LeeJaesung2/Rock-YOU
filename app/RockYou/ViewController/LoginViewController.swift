@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
                     // 비밀번호 같으면
                     if property as! String == password {
                         // 메인뷰로 화면 전환
-                        let mainView = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
+                        let mainView = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController")
                         
                         // 뷰전환 애니메이션
                         guard let window = self.view.window else { return }
@@ -94,8 +94,8 @@ class LoginViewController: UIViewController {
                     //print("Document data: \(dataDescription)")
 
                 } else {
-                    print("Document does not exist")
-                }
+                    self.ShowAlert(alertmsg: "등록되지 않은 사용자입니다")
+                 }
             }
         }
     }
