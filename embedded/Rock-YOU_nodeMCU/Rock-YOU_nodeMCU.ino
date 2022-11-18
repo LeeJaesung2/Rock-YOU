@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <Firebase_ESP_Client.h>
-#include <TinyGPSPlus.h>
+#include <SoftwareSerial.h>
 
 //_________bluetooth________________
 //bluethooth library
@@ -35,6 +35,10 @@ FirebaseConfig config;
 
 //GPIO pin
 #define vib_pin 2 //2 : shock sensor
+#define RX_pin 3;
+#define TX_pin 1;
+
+SoftwareSerial gps(RX_pin, TX_pin);
 
 //global variables
 unsigned long sendDataPrevMillis; //last data send time
@@ -64,13 +68,6 @@ typedef enum {
 #define WIFI_SSID "Jaesung’s iPhone"
 #define WIFI_PASSWORD "87654321"
 
-//________function declaration________________
-void initValue();
-void connWifi();
-void connBluetooth();
-void setFirebase();
-void updateFirebase(String path, int data);
-int getShockValue();
 
 void setup(){
   initValue();
@@ -89,7 +86,7 @@ void setup(){
 }
 
 void loop(){
-  pastvib = getShockValue();
+  getShockValue();
   updateFirebase("test/int", 10);
 }
 
@@ -157,26 +154,26 @@ void setFirebase(){
   Firebase.reconnectWiFi(true);
 }
 
-void updateFirebase(String path, int data){
-  
-  // Write an data on the database path
-  if (Firebase.RTDB.setInt(&fbdo, path, data)){
-  #if(DEBUG)
-    Serial.println("PASSED");
-    Serial.println("PATH: " + fbdo.dataPath());
-    Serial.println("TYPE: " + fbdo.dataType());
-  #endif
-  }
-  else {
-  #if(DEBUG)
-    Serial.println("FAILED");
-    Serial.println("REASON: " + fbdo.errorReason());
-  #endif
-  }
+
+
+void updateFirebase(String path, FirebaseJson data){
+  if (Firebase.ready()){
+        if (Firebase.Firestore.patchDocument(&fbdo, FIREBASE_PROJECT_ID, "" /* databaseId can be (default) or empty */, path.c_str(), data.raw(), "count,status" /* updateMask */))
+            Serial.printf("ok\n%s\n\n", fbdo.payload().c_str());
+        else
+            Serial.println(fbdo.errorReason());
+    }
   
 }
 
-int getShockValue(){
+FirebaseJson updateJsonData(String JsonPath, int data){
+  content.clear();
+  content.set(JsonPath, data).c_str());
+  Serial.print("Update a document... ");
+  return content;
+}
+
+void getShockValue(){
   //get shock value every 1.0s
   if(millis() - sendDataPrevMillis > 10000 || sendDataPrevMillis == 0){
     sendDataPrevMillis = millis();
@@ -187,9 +184,10 @@ int getShockValue(){
     }
     pastvib = vib;
   }
-  return pastvib;
 }
 
 void getGPSValue(){
-
+  softwareSerial.wirte(ss.read());
 }
+
+
