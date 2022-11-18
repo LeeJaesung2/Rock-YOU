@@ -106,6 +106,7 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    //뒤로가기 버튼
     @IBAction func backButtonDidTap(_ sender: Any) {
         self.dismiss(animated: true)
     }

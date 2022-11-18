@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
                     // 비밀번호 같으면
                     if property as! String == password {
                         // 메인뷰로 화면 전환
-                        let mainView = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
+                        let mainView = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController")
                         
                         // 뷰전환 애니메이션
                         guard let window = self.view.window else { return }
