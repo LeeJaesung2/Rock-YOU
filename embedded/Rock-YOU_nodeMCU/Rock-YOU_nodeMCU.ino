@@ -90,11 +90,10 @@ void setup(){
 
 void loop(){
   getShockValue();
-  //updateFirebase("test/int", 10);
 }
 
 
-/*function here*/
+/*function to setup*/
 
 void initValue(){
   sendDataPrevMillis = 0;
@@ -147,19 +146,18 @@ void setFirebase(){
   Firebase.reconnectWiFi(true);
 }
 
-
-
+/*function to use*/
 void updateFirebase(int value, int data){
   String path = "bicycle/" + bicycleId;
   String jsonpath;
   String updateMask;
   switch(value)
     case LOCK:
-      jsonpath = "fields/lock/integerValue"
-      updateMask = "lock"
+      jsonpath = "fields/lock/integerValue";
+      updateMask = "lock";
     case STATE:
-      jsonpath = "fields/state/integerValue"
-      updateMask = "state"
+      jsonpath = "fields/state/integerValue";
+      updateMask = "state";
 
   content.clear();
   content.set(jsonPath, String(data)); //integer also use ""
@@ -178,11 +176,11 @@ void updateGPSFirebase(int value, double data){
   String updateMask;
   switch(value)
     case LONGITUDE:
-      jsonpath = "fields/GPS/geoPointValue/longitude"
-      updateMask = "longitude"
+      jsonpath = "fields/GPS/geoPointValue/longitude";
+      updateMask = "longitude";
     case LATITUDE:
-      jsonpath = "fields/GPS/geoPointValue/latitude"
-      updateMask = "latitude"
+      jsonpath = "fields/GPS/geoPointValue/latitude";
+      updateMask = "latitude";
 
   content.clear();
   content.set(jsonPath, data);
