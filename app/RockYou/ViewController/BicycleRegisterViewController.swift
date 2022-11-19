@@ -124,7 +124,7 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
     @IBAction func nextButtonDidTap(_ sender: Any) {
         if viewFlag == 1{
             UIView.animate(
-                withDuration: 2,
+                withDuration: 1,
                 animations: {
                     self.firstToSecondConstraint.constant = 0
                     self.progressViewWidthConstraint.constant = 50
@@ -173,7 +173,7 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
                 }
                 
                 UIView.animate(
-                    withDuration: 2,
+                    withDuration: 1,
                     animations: {
                         self.secondToTirldConstraint.constant = 0
                         self.progressViewWidthConstraint2.constant = 55

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N5p-ct-6ud">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bPr-iU-u3v">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -657,18 +657,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y7N-yL-3CV">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7N-yL-3CV">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="682"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfA-J5-Ml6">
+                                <rect key="frame" x="0.0" y="677" width="390" height="150"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="YlO-zD-PKc">
+                                        <rect key="frame" x="50" y="40" width="290" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAt-xx-aBI">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="3au-Sc-CEC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="자전거 잠그기">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lockButtonDidTap:" destination="ztJ-yb-nCH" eventType="touchUpInside" id="LcH-yV-r3X"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktg-ly-Avz">
+                                                <rect key="frame" x="240" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="3zG-AY-zmb"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="arrow.2.squarepath" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="resetButtonDidTap:" destination="ztJ-yb-nCH" eventType="touchUpInside" id="yR1-4Y-rqk"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="YlO-zD-PKc" secondAttribute="trailing" constant="50" id="eux-ig-ry7"/>
+                                    <constraint firstItem="YlO-zD-PKc" firstAttribute="leading" secondItem="dfA-J5-Ml6" secondAttribute="leading" constant="50" id="mqq-ur-BVD"/>
+                                    <constraint firstItem="YlO-zD-PKc" firstAttribute="top" secondItem="dfA-J5-Ml6" secondAttribute="top" constant="40" id="ram-r1-9RG"/>
+                                    <constraint firstAttribute="height" constant="150" id="vow-sc-WaI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="f5Q-Qp-RKj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dfA-J5-Ml6" firstAttribute="top" secondItem="Y7N-yL-3CV" secondAttribute="bottom" constant="-5" id="Eup-cZ-AZx"/>
+                            <constraint firstItem="f5Q-Qp-RKj" firstAttribute="bottom" secondItem="dfA-J5-Ml6" secondAttribute="bottom" constant="-40" id="NCR-Yy-Tjp"/>
+                            <constraint firstItem="Y7N-yL-3CV" firstAttribute="leading" secondItem="f5Q-Qp-RKj" secondAttribute="leading" id="ZS3-R1-4Ws"/>
+                            <constraint firstItem="Y7N-yL-3CV" firstAttribute="trailing" secondItem="f5Q-Qp-RKj" secondAttribute="trailing" id="gNT-Qz-BGB"/>
+                            <constraint firstItem="Y7N-yL-3CV" firstAttribute="top" secondItem="NVm-pJ-LYy" secondAttribute="top" id="gqt-Lz-xz4"/>
+                            <constraint firstItem="dfA-J5-Ml6" firstAttribute="leading" secondItem="f5Q-Qp-RKj" secondAttribute="leading" id="pLq-tB-mp1"/>
+                            <constraint firstItem="f5Q-Qp-RKj" firstAttribute="trailing" secondItem="dfA-J5-Ml6" secondAttribute="trailing" id="qpQ-Ue-sSl"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Iig-kF-M6y"/>
                     <connections>
+                        <outlet property="lockButton" destination="OAt-xx-aBI" id="NKM-6x-5ww"/>
                         <outlet property="mapView" destination="Y7N-yL-3CV" id="5Pj-O8-tNA"/>
+                        <outlet property="resetButton" destination="ktg-ly-Avz" id="rIk-xT-Rvx"/>
+                        <outlet property="underbarView" destination="dfA-J5-Ml6" id="uUh-qO-huB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKd-jL-znx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1041,6 +1100,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.2.squarepath" catalog="system" width="128" height="88"/>
         <image name="bell" catalog="system" width="125" height="128"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
