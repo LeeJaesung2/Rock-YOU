@@ -10,6 +10,10 @@ class MapViewController: UIViewController {
     @IBOutlet weak var lockButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     
+    // 뒤로가기 아울렛
+    @IBOutlet weak var backButton: UIButton!
+    
+    
     // coordinate : 위도와 경도
     private let locationManager = CLLocationManager()
     private var currentCoordinate: CLLocationCoordinate2D?
@@ -25,7 +29,7 @@ class MapViewController: UIViewController {
         lockButton.layer.cornerRadius = 25
         resetButton.layer.cornerRadius = 25
         
-        
+        backButton.layer.cornerRadius = 18
         
         self.mapView.mapType = MKMapType.standard
         configureLocationServices()
@@ -76,6 +80,9 @@ class MapViewController: UIViewController {
         
     }
     
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        dismiss(animated: true)
+    }
     
     
 }
