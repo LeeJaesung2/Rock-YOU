@@ -80,8 +80,8 @@ class LoginViewController: UIViewController {
                         guard let window = self.view.window else { return }
                         let transition = CATransition()
                         transition.type = .reveal
-                        transition.duration = 0.3
-                        window.layer.add(transition, forKey: kCATransition)
+                            transition.duration = 0.3
+                            window.layer.add(transition, forKey: kCATransition)
                         
                         self.view.window?.rootViewController = mainView
                         self.view.window?.makeKeyAndVisible()

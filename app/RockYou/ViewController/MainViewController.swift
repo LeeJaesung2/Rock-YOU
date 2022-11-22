@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 struct LabelInfo {
     let nickname: String
@@ -37,6 +38,7 @@ class MainViewController: UIViewController{
         refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
         collectionView.alwaysBounceVertical = true
         collectionView.refreshControl = refreshControl
+       
     }
     
     @objc
