@@ -148,17 +148,19 @@ void setFirebase(){
 
 /*function to use*/
 void updateFirebase(int value, int data){
-  String path = "bicycle/" + bicycleId;
-  String jsonpath;
+  String path = "bicycle/qf6r5zOcY4jXmmcniqX9";
+  String jsonPath;
   String updateMask;
-  switch(value)
+  switch(value){
     case LOCK:
-      jsonpath = "fields/lock/integerValue";
+      jsonPath = "fields/lock/integerValue";
       updateMask = "lock";
+      break;
     case STATE:
-      jsonpath = "fields/state/integerValue";
+      jsonPath = "fields/state/integerValue";
       updateMask = "state";
-
+      break;
+  }
   content.clear();
   content.set(jsonPath, String(data)); //integer also use ""
   if (Firebase.ready()){
@@ -171,17 +173,19 @@ void updateFirebase(int value, int data){
 }
 
 void updateGPSFirebase(int value, double data){
-  String path = "bicycle/" + bicycleId;
-  String jsonpath;
+  String path = "bicycle/qf6r5zOcY4jXmmcniqX9";
+  String jsonPath;
   String updateMask;
-  switch(value)
+  switch(value){
     case LONGITUDE:
-      jsonpath = "fields/GPS/geoPointValue/longitude";
+      jsonPath = "fields/GPS/geoPointValue/longitude";
       updateMask = "longitude";
+      break;
     case LATITUDE:
-      jsonpath = "fields/GPS/geoPointValue/latitude";
+      jsonPath = "fields/GPS/geoPointValue/latitude";
       updateMask = "latitude";
-
+      break;
+  }
   content.clear();
   content.set(jsonPath, data);
   if (Firebase.ready()){
