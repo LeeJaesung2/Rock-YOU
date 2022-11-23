@@ -30,6 +30,9 @@ class MainViewController: UIViewController{
     let viewModel = LabelViewModel()
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
+    let db = Firestore.firestore()
+    
+    
     @IBOutlet weak var collectionView: UICollectionView!
     private let refreshControl = UIRefreshControl()
 
@@ -47,7 +50,6 @@ class MainViewController: UIViewController{
     
     private func serverRead(){
         // get user document
-        let db = Firestore.firestore()
         db.collection("bicycle").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -129,7 +131,56 @@ class MainViewController: UIViewController{
     
     // 삭제 버튼 클릭
     @IBAction func bicycleRemoveBtnDidTap(_ sender: Any) {
+        let title = "자전거 삭제"
+        let message = "삭제하고 싶은 자전거의 별명을 입력하세요"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        var identinum: String = ""
+
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) { (_) in
+            // alert 텍스트필드 창 여려개 가능 -> 0번째 창에 텍스트 가져옴
+            if let txt = alert.textFields?[0]{
+                if txt.text?.isEmpty != true{
+                    
+                    
+                    
+                    
+                    self.db.collection("bicycle").getDocuments() { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            for document in querySnapshot!.documents {
+                                guard let documentUid = document.get("uid") as? String else { return }
+                                //로그인한 유저의 uid와 저장된 uid가 같은 바이크 정보 불러오기
+                                if(documentUid == userid){
+                                    identinum = document.documentID
+                                }
+                            }
+                        }
+                    }
+                                          
+                    self.db.collection("bicycle").document(identinum).delete() { err in
+                        if let err = err {
+                            print("Error removing document: \(err)")
+                        } else {
+                            print("Document successfully removed!")
+                        }
+                    }
+                    
+                } else {
+                    print("입력된 값이 없음")
+                }
+            }
+        }
         
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        alert.addTextField(){ (tx) in
+            tx.placeholder = "자전거 별명을 입력하세요"
+        }
+        
+        
+        self.present(alert, animated: true)
     }
 }
 
