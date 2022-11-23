@@ -3,7 +3,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate{
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
     
     // 하단바 아울렛
     @IBOutlet weak var underbarView: UIView!
@@ -17,7 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     // 위치조정 controller
     private let locationManager = CLLocationManager()
     // mapMark
-    private let mark = Marker(coordinate: nil)
+    private let mark = Marker(coordinate: CLLocationCoordinate2D(latitude: 37.6658609, longitude: 127.0317674))
     //mapView 아울렛
     @IBOutlet weak var mapView: MKMapView!
     
@@ -37,24 +37,31 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         
         // 앱 위치 이동
         locationManager.delegate = self
-        setMapView(latitude: 37.6658609, longitude: 127.0317674 )
         
+       
+           
+        setMapView(latitude: 37.6628 , longitude: 127.0317674 )
+            
+      
     }
     
-    private func setMapView(latitude: CLLocationDegrees, longitude: CLLocationDegrees){
+    
+    
+    private func setMapView (latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         
         let region = MKCoordinateRegion(center: coordinate, span: span)
         mapView.setRegion(region, animated: true)
-        
-        Marking(latitude: latitude, longitude: longitude)
+        print(latitude)
+        //Marking(latitude: latitude, longitude: longitude)
     }
     
     private func Marking(latitude: CLLocationDegrees, longitude: CLLocationDegrees){
         self.mapView.removeAnnotation(mark)
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        mark = Marker(coordinate: coordinate)
+        let mark = Marker(coordinate: coordinate)
         mapView.addAnnotation(mark)
     }
     
