@@ -47,7 +47,6 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         
         timerNum = 10
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getData), userInfo: nil, repeats: true)
-        
     }
     
     @objc func getData(){
