@@ -6,9 +6,10 @@ target 'RockYou' do
   use_frameworks!
 
   # Pods for RockYou
-pod 'Firebase/Analytics'
-pod 'Firebase/Auth'
-pod 'Firebase/Core'
-pod 'Firebase/Firestore'
+	pod 'Firebase/Auth'
+	pod 'Firebase/Core'
+	pod 'Firebase/Firestore'
 
+	pod 'FSPagerView'
+	pod 'SwiftSoup'
 end

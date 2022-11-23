@@ -1,0 +1,4 @@
+target 'RockYou' do
+	pod 'FSPagerView'
+	pod 'SwiftSoup'
+end
