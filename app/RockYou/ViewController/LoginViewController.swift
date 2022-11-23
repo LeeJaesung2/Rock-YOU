@@ -12,6 +12,11 @@ import FirebaseFirestore
 let strAlertEnterUserName = "ID를 입력하세요"
 let strAlertEnterPassword = "비밀번호를 입력하세요"
 
+//로그인할 때, uid, id 전역변수 할당
+var userid : String = ""
+var identification = ""
+
+
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var mainView: UIView!
@@ -66,6 +71,9 @@ class LoginViewController: UIViewController {
             ref.getDocument { (document, error) in
                 // 존재 한다면
                 if let document = document, document.exists {
+                    identification = userName
+                    guard let uid = document.get("uid") else { return }
+                    userid = uid as! String
                     // 비밀번호 필드만 가져오기
                     guard let property = document.get("password") else { return }
                     print(type(of: property))
@@ -80,8 +88,8 @@ class LoginViewController: UIViewController {
                         guard let window = self.view.window else { return }
                         let transition = CATransition()
                         transition.type = .reveal
-                        transition.duration = 0.3
-                        window.layer.add(transition, forKey: kCATransition)
+                            transition.duration = 0.3
+                            window.layer.add(transition, forKey: kCATransition)
                         
                         self.view.window?.rootViewController = mainView
                         self.view.window?.makeKeyAndVisible()

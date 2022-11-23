@@ -3,7 +3,8 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate{
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
+
     // 하단바 아울렛
     @IBOutlet weak var underbarView: UIView!
     @IBOutlet weak var lockButton: UIButton!
@@ -14,7 +15,7 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     // 위치조정 controller
     private let locationManager = CLLocationManager()
     // mapMark
-    private let mark = Marker(coordinate: nil)
+    private let mark = Marker(coordinate: CLLocationCoordinate2D(latitude: 37.6658609, longitude: 127.0317674))
     //mapView 아울렛
     @IBOutlet weak var mapView: MKMapView!
     
@@ -47,7 +48,11 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         
         timerNum = 10
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getData), userInfo: nil, repeats: true)
-        
+       
+           
+        setMapView(latitude: 37.6628 , longitude: 127.0317674 )
+            
+      
     }
     
     @objc func getData(){
@@ -57,6 +62,7 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     }
     
     private func moveLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees){
+    
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         
@@ -71,7 +77,9 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2DMake(latitudeValue, longtitudeValue)
         mapView.addAnnotation(annotation)
+        print(latitude)
     }
+    
     
     @IBAction func lockButtonDidTap(_ sender: Any) {
         print("잠금")
