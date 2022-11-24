@@ -96,7 +96,6 @@ void setup(){
 }
 
 void loop(){
-  getGPSValue();
 }
 
 
@@ -194,7 +193,7 @@ void updateGPSFirebase(int value, float data){
       updateMask = "GPS";
       break;
   }
-  content.clear();
+  //content.clear();
   content.set(jsonPath, data);
   if (Firebase.ready()){
         if (Firebase.Firestore.patchDocument(&fbdo, FIREBASE_PROJECT_ID, "", path.c_str(), content.raw(), updateMask))
@@ -226,22 +225,22 @@ void getGPSValue(){
   for (unsigned long start = millis(); millis() - start < 1000;){
     if(gss.available()){
       if (gps.encode(gss.read())){
-        Serial.println("dddddddd");
         newData = true;
       }
     }
   }
   if (newData)
   {
-    Serial.println("fffffff");
     float flat, flon;
     unsigned long age;
     gps.f_get_position(&flat, &flon, &age);
-    Serial.print("LAT=");
-    Serial.print(flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flat, 6);
-    Serial.print(" LON=");
-    Serial.print(flon == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flon, 6);
-    Serial.println();
+    #if(DEBUG)
+      Serial.print("LAT=");
+      Serial.print(flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flat, 6);
+      Serial.print(" LON=");
+      Serial.print(flon == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flon, 6);
+      Serial.println();
+    #endif
     updateGPSFirebase(LONGITUDE, flon);
     updateGPSFirebase(LATITUDE, flat);
   }
