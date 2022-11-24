@@ -7,7 +7,6 @@
 TinyGPS gps;
 SoftwareSerial gss(RX_pin, TX_pin);
 
-unsigned long sendDataPrevMillis;
 
 void setup()
 {
@@ -25,10 +24,11 @@ void loop()
 
 void getGPSValue(){
   bool newData = false;
+  unsigned long chars;
+  unsigned short sentences, failed;
   
   // For one second we parse GPS data and report some key values
-  if (millis() - sendDataPrevMillis > 1000 || sendDataPrevMillis == 0){
-    sendDataPrevMillis = millis();
+  for (unsigned long start = millis(); millis() - start < 1000;){
     if (gss.available()){
       // Serial.write(c); // uncomment this line if you want to see the GPS data flowing
       if (gps.encode(gss.read())) // Did a new valid sentence come in?

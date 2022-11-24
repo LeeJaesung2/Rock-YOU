@@ -187,11 +187,11 @@ void updateGPSFirebase(int value, float data){
   switch(value){
     case LONGITUDE:
       jsonPath = "fields/GPS/geoPointValue/longitude";
-      updateMask = "longitude";
+      updateMask = "GPS";
       break;
     case LATITUDE:
       jsonPath = "fields/GPS/geoPointValue/latitude";
-      updateMask = "latitude";
+      updateMask = "GPS";
       break;
   }
   content.clear();
@@ -223,11 +223,9 @@ void updateGPSFirebase(int value, float data){
 
 void getGPSValue(){
   bool newData = false;
-  if(millis() - sendDataPrevMillis > 1000 || sendDataPrevMillis == 0){
-    sendDataPrevMillis = millis();
+  for (unsigned long start = millis(); millis() - start < 1000;){
     if(gss.available()){
-      char c = gss.read();
-      if (gps.encode(c)){
+      if (gps.encode(gss.read())){
         Serial.println("dddddddd");
         newData = true;
       }
