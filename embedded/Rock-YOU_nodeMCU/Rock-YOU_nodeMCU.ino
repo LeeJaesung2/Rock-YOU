@@ -2,6 +2,7 @@
 #include <WiFi.h>
 #include <Firebase_ESP_Client.h>
 #include <SoftwareSerial.h>
+#include <TinyGPS.h>
 
 //_________bluetooth________________
 //bluethooth library
@@ -30,6 +31,7 @@ FirebaseAuth auth;
 FirebaseConfig config;
 FirebaseJson content;
 
+
 //_________mcu board________________
 //DEBUG mode
 #define DEBUG true
@@ -38,10 +40,14 @@ FirebaseJson content;
 
 //GPIO pin
 #define vib_pin 2 //2 : shock sensor
-#define RX_pin 3
-#define TX_pin 1
+#define RX_pin 35
+#define TX_pin 3
 
-SoftwareSerial gps(RX_pin, TX_pin);
+
+//_________GPS________________
+TinyGPS gps;
+SoftwareSerial gss(RX_pin, TX_pin);
+
 
 //global variables
 unsigned long sendDataPrevMillis; //last data send time
@@ -79,9 +85,10 @@ void setup(){
   #endif
   //vibration sensor setup
   pinMode(vib_pin, INPUT);
-  
+  pinMode(RX_pin, INPUT);
+  gss.begin(9600);
   connWifi();
-  connBluetooth();
+  //connBluetooth();
   setFirebase();
 
   
@@ -89,7 +96,7 @@ void setup(){
 }
 
 void loop(){
-  getShockValue();
+  getGPSValue();
 }
 
 
@@ -147,6 +154,7 @@ void setFirebase(){
 }
 
 /*function to use*/
+
 void updateFirebase(int value, int data){
   String path = "bicycle/qf6r5zOcY4jXmmcniqX9";
   String jsonPath;
@@ -172,18 +180,18 @@ void updateFirebase(int value, int data){
   
 }
 
-void updateGPSFirebase(int value, double data){
+void updateGPSFirebase(int value, float data){
   String path = "bicycle/qf6r5zOcY4jXmmcniqX9";
   String jsonPath;
   String updateMask;
   switch(value){
     case LONGITUDE:
       jsonPath = "fields/GPS/geoPointValue/longitude";
-      updateMask = "longitude";
+      updateMask = "GPS";
       break;
     case LATITUDE:
       jsonPath = "fields/GPS/geoPointValue/latitude";
-      updateMask = "latitude";
+      updateMask = "GPS";
       break;
   }
   content.clear();
@@ -199,7 +207,7 @@ void updateGPSFirebase(int value, double data){
 
 
 
-void getShockValue(){
+/*void getShockValue(){
   //get shock value every 1.0s
   if(millis() - sendDataPrevMillis > 10000 || sendDataPrevMillis == 0){
     sendDataPrevMillis = millis();
@@ -211,13 +219,39 @@ void getShockValue(){
     }
     pastvib = vib;
   }
-}
+}*/
 
 void getGPSValue(){
-  Serial.write(gps.read());
+  bool newData = false;
+  for (unsigned long start = millis(); millis() - start < 1000;){
+    if(gss.available()){
+      if (gps.encode(gss.read())){
+        Serial.println("dddddddd");
+        newData = true;
+      }
+    }
+  }
+  if (newData)
+  {
+    Serial.println("fffffff");
+    float flat, flon;
+    unsigned long age;
+    gps.f_get_position(&flat, &flon, &age);
+    Serial.print("LAT=");
+    Serial.print(flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flat, 6);
+    Serial.print(" LON=");
+    Serial.print(flon == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flon, 6);
+    Serial.println();
+    updateGPSFirebase(LONGITUDE, flon);
+    updateGPSFirebase(LATITUDE, flat);
+  }
+  
+}
 
-  float latitude = 1.24;
-  float longitude = 36.22;
-  updateGPSFirebase(LONGITUDE, longitude);
-  updateGPSFirebase(LATITUDE, latitude);
+void open(){
+
+}
+
+void close(){
+
 }
