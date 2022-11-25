@@ -3,6 +3,7 @@
 #include <Firebase_ESP_Client.h>
 #include <SoftwareSerial.h>
 #include <TinyGPS.h>
+#include <ESP32_Servo.h>
 
 //_________bluetooth________________
 //bluethooth library
@@ -13,6 +14,10 @@ BluetoothSerial serialBT;
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 #endif
+
+//_________wifi________________
+#define WIFI_SSID "Jaesung’s iPhone"
+#define WIFI_PASSWORD "87654321"
 
 //_________firebase________________
 //firebase library
@@ -42,12 +47,17 @@ FirebaseJson content;
 //#define vib_pin 2 //2 : shock sensor
 #define RX_pin 35
 #define TX_pin 3
+#define LockGear_pin 16
+#define MainGear_pin 17
 
 
 //_________GPS________________
 TinyGPS gps;
 SoftwareSerial gss(RX_pin, TX_pin);
 
+//_________servo motor________________
+Servo mainServo;
+Servo lockServo;
 
 //global variables
 unsigned long sendDataPrevMillis; //last data send time
@@ -72,10 +82,7 @@ typedef enum{
 } value;
 
 
-//_________wifi________________
-// set wifi
-#define WIFI_SSID "Jaesung’s iPhone"
-#define WIFI_PASSWORD "87654321"
+
 
 
 void setup(){
@@ -85,8 +92,11 @@ void setup(){
   #endif
   /*//vibration sensor setup
   pinMode(vib_pin, INPUT);*/
+  mainServo.attach(MainGear_pin);
+  lockServo.attach(LockGear_pin);
   pinMode(RX_pin, INPUT);
   gss.begin(9600);
+
   connWifi();
   //connBluetooth();
   setFirebase();
@@ -96,6 +106,8 @@ void setup(){
 }
 
 void loop(){
+  open();
+  close();
 }
 
 
@@ -106,7 +118,7 @@ void initValue(){
   signupOK = false;
   lock = false;
   conn_bluetooth = false;
-  pastvib = 0;
+  //pastvib = 0;
   state = SAFE;
 }
 
@@ -248,9 +260,29 @@ void getGPSValue(){
 }
 
 void open(){
-
+  for(int posDegrees = 180; posDegrees >= 0; posDegrees--) {
+    lockServo.write(posDegrees);
+    Serial.println(posDegrees);
+    delay(20);
+  }
+  for(int posDegrees = 180; posDegrees >= 0; posDegrees--) {
+    mainServo.write(posDegrees);
+    Serial.println(posDegrees);
+    delay(20);
+  }
+  updateFirebase(LOCK,0);
 }
 
 void close(){
-
+  for(int posDegrees = 0; posDegrees <= 270; posDegrees++) {
+    mainServo.write(posDegrees);
+    Serial.println(posDegrees);
+    delay(20);
+  }
+  for(int posDegrees = 0; posDegrees <= 270; posDegrees++) {
+    lockServo.write(posDegrees);
+    Serial.println(posDegrees);
+    delay(20);
+  }
+  updateFirebase(LOCK,1);
 }
