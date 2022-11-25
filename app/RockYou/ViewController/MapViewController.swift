@@ -21,7 +21,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var timer : Timer?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,19 +45,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             timer!.invalidate()
         }
         
-        timerNum = 10
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getData), userInfo: nil, repeats: true)
-       
-           
-        setMapView(latitude: 37.6628 , longitude: 127.0317674 )
-            
-      
     }
     
     @objc func getData(){
         //여기에 firebase map 값을 가져와서 아래 함수에 전달해 주시면 됩니다.
         moveLocation(latitude: 37.6658609, longitude: 127.0317674 )
-
     }
     
     private func moveLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees){
@@ -73,11 +65,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     private func setAnnotation(latitudeValue: CLLocationDegrees, longtitudeValue: CLLocationDegrees){
-        mapView.removeAnnotation(mapView.annotations)
+        mapView.removeAnnotations(mapView.annotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2DMake(latitudeValue, longtitudeValue)
         mapView.addAnnotation(annotation)
-        print(latitude)
     }
     
     

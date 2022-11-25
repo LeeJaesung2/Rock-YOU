@@ -58,7 +58,7 @@ class MainViewController: UIViewController{
                     guard let documentUid = document.get("uid") as? String else { return }
                     //로그인한 유저의 uid와 저장된 uid가 같은 바이크 정보 불러오기
                     if(documentUid == userid){
-                        print("\(document.documentID) => \(document.data())")
+                        //print("\(document.documentID) => \(document.data())")
                         let bicycleNickname = document.get("bicycleNickname") as! String
                         let idnum = document.documentID
                         let state = document.get("state") as! Int
@@ -72,6 +72,18 @@ class MainViewController: UIViewController{
                 }
             }
         }
+    }
+    
+    private func removeServerData(collection:String, document:String){
+        
+        db.collection(collection).document(document).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+        
     }
     
     func stateCheckViewChange(state : Int) -> UIColor{
@@ -112,14 +124,19 @@ class MainViewController: UIViewController{
             self.collectionView.reloadData()
             self.refreshControl.endRefreshing()
             
-
-            // 컬렉션뷰의 데이터 삭제
-            let removeCount = self.viewModel.countOfList
-            for _ in 0..<removeCount{
-                self.viewModel.labelInfoList.removeFirst()
-            }
-            self.serverRead()
+            self.syncCollectioview()
+            
         }
+    }
+    
+    // 서버의 값으로 컬력센뷰 동기화
+    func syncCollectioview(){
+        // 컬렉션뷰의 데이터 삭제
+        let removeCount = self.viewModel.countOfList
+        for _ in 0..<removeCount{
+            self.viewModel.labelInfoList.removeFirst()
+        }
+        self.serverRead()
     }
     
     // 등록 버튼 클릭
@@ -134,36 +151,29 @@ class MainViewController: UIViewController{
         let title = "자전거 삭제"
         let message = "삭제하고 싶은 자전거의 별명을 입력하세요"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        var identinum: String = ""
-
+        
+        var bluetooth: String = ""
+        
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) { (_) in
             // alert 텍스트필드 창 여려개 가능 -> 0번째 창에 텍스트 가져옴
             if let txt = alert.textFields?[0]{
                 if txt.text?.isEmpty != true{
                     
-                    
-                    
-                    
                     self.db.collection("bicycle").getDocuments() { (querySnapshot, err) in
                         if let err = err {
                             print("Error getting documents: \(err)")
                         } else {
                             for document in querySnapshot!.documents {
-                                guard let documentUid = document.get("uid") as? String else { return }
-                                //로그인한 유저의 uid와 저장된 uid가 같은 바이크 정보 불러오기
-                                if(documentUid == userid){
-                                    identinum = document.documentID
+                                guard let txtname = document.get("bicycleNickname") as? String else { return }
+                                if(txtname == txt.text!){
+                                    let idnum = document.documentID
+                                    bluetooth = idnum
+                                    self.removeServerData(collection: "bicycle", document: bluetooth)
+                                    
+                                    self.syncCollectioview()
                                 }
                             }
-                        }
-                    }
-                                          
-                    self.db.collection("bicycle").document(identinum).delete() { err in
-                        if let err = err {
-                            print("Error removing document: \(err)")
-                        } else {
-                            print("Document successfully removed!")
                         }
                     }
                     
@@ -175,6 +185,7 @@ class MainViewController: UIViewController{
         
         alert.addAction(cancel)
         alert.addAction(ok)
+        
         alert.addTextField(){ (tx) in
             tx.placeholder = "자전거 별명을 입력하세요"
         }
