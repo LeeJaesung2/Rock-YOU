@@ -24,6 +24,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var txtEmail: WLITextField!
     @IBOutlet weak var txtPhone: WLITextField!
     
+    @IBOutlet weak var regBtn: UIButton!
+    
     @IBOutlet weak var mainView: UIView!
     
     override func viewDidLoad() {
@@ -31,6 +33,8 @@ class SignUpViewController: UIViewController {
         
         mainView.layer.cornerRadius = 40
         mainView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        regBtn.layer.cornerRadius = 25
         
         txtUserName.wliDelegate = self
         txtPassword.wliDelegate = self

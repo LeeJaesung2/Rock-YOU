@@ -21,6 +21,7 @@
 		4FFF168928ED0514003ADFAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FFF168828ED0514003ADFAA /* Assets.xcassets */; };
 		4FFF168C28ED0514003ADFAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FFF168A28ED0514003ADFAA /* LaunchScreen.storyboard */; };
 		4FFF169428ED1069003ADFAA /* WLITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF169328ED1069003ADFAA /* WLITextField.swift */; };
+		4FFFCD1329313501004857A5 /* PermanentMarker-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FFFCD1229313501004857A5 /* PermanentMarker-Regular.ttf */; };
 		9F4AC603DA2FB08789A3D6CC /* Pods_RockYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E07FF484EFDEB11990FB5286 /* Pods_RockYou.framework */; };
 		C7B44727292CF6E500B272A4 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B44726292CF6E500B272A4 /* Marker.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		4FFF168B28ED0514003ADFAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FFF168D28ED0514003ADFAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FFF169328ED1069003ADFAA /* WLITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLITextField.swift; sourceTree = "<group>"; };
+		4FFFCD1229313501004857A5 /* PermanentMarker-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PermanentMarker-Regular.ttf"; sourceTree = "<group>"; };
 		C7B44726292CF6E500B272A4 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		D0EF711093D9FCDD9B80B538 /* Pods-RockYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RockYou.debug.xcconfig"; path = "Target Support Files/Pods-RockYou/Pods-RockYou.debug.xcconfig"; sourceTree = "<group>"; };
 		E07FF484EFDEB11990FB5286 /* Pods_RockYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RockYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +72,6 @@
 				4F52F8172924CF700087758E /* AlarmViewController.swift */,
 				4F52F8192924CF7D0087758E /* UserViewController.swift */,
 				4F52F81B2924D9590087758E /* BicycleRegisterViewController.swift */,
-				C7B44726292CF6E500B272A4 /* Marker.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -87,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				4FFF169328ED1069003ADFAA /* WLITextField.swift */,
+				C7B44726292CF6E500B272A4 /* Marker.swift */,
+				4FFFCD1229313501004857A5 /* PermanentMarker-Regular.ttf */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				4FFF168C28ED0514003ADFAA /* LaunchScreen.storyboard in Resources */,
 				4F525D61290E75A6007A76FF /* GoogleService-Info.plist in Resources */,
 				4FFF168928ED0514003ADFAA /* Assets.xcassets in Resources */,
+				4FFFCD1329313501004857A5 /* PermanentMarker-Regular.ttf in Resources */,
 				4FFF168728ED0514003ADFAA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +422,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RockYou/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "걍 해줘";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "걍 해줘";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -447,6 +454,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RockYou/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "걍 해줘";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "걍 해줘";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

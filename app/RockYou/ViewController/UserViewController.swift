@@ -27,7 +27,7 @@ class UserViewController: UIViewController {
     private lazy var nicknameLabel : UILabel = {
         let label = UILabel()
         label.text = self.nickString
-        label.font = .systemFont(ofSize: 17)
+        label.font = .systemFont(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -167,13 +167,5 @@ class UserViewController: UIViewController {
             }
         }
     }
-    
-    
-//
-//    func updatePeople()
-//    {
-//        for peop in personArray{
-//            thePeople.text = ""
-//        }
-//    }
+
 }
