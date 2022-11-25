@@ -5,15 +5,6 @@
 #include <TinyGPS.h>
 #include <ESP32_Servo.h>
 
-//_________bluetooth________________
-//bluethooth library
-#include "BluetoothSerial.h"
-BluetoothSerial serialBT;
-
-//check bluetooth enabled
-#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
-#error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
-#endif
 
 //_________wifi________________
 #define WIFI_SSID "Jaesung’s iPhone"
@@ -45,15 +36,21 @@ FirebaseJson content;
 
 //GPIO pin
 //#define vib_pin 2 //2 : shock sensor
-#define RX_pin 35
-#define TX_pin 3
+#define GPS_RX_pin 35
+#define GPS_TX_pin 1
+#define BLE_RX_pin 32
+#define BLE_TX_pin 33
 #define LockGear_pin 16
 #define MainGear_pin 17
 
 
+//_________bluetooth________________
+SoftwareSerial BTSerial(BLE_RX_pin, BLE_TX_pin);
+
+
 //_________GPS________________
 TinyGPS gps;
-SoftwareSerial gss(RX_pin, TX_pin);
+SoftwareSerial gss(GPS_RX_pin, GPS_TX_pin);
 
 //_________servo motor________________
 Servo mainServo;
@@ -69,7 +66,7 @@ int state;
 
 typedef enum {
   SAFE,
-  SHOCK,
+  //SHOCK,
   STEEL,
   DRIVE
 } bicycleState;
@@ -94,20 +91,20 @@ void setup(){
   pinMode(vib_pin, INPUT);*/
   mainServo.attach(MainGear_pin);
   lockServo.attach(LockGear_pin);
-  pinMode(RX_pin, INPUT);
+  pinMode(GPS_RX_pin, INPUT);
+  pinMode(BLE_RX_pin, INPUT);
+  pinMode(BLE_TX_pin, OUTPUT);
   gss.begin(9600);
+  BTSerial.begin(9600);
 
   connWifi();
   //connBluetooth();
   setFirebase();
-
   
-
 }
 
 void loop(){
-  open();
-  close();
+  
 }
 
 
@@ -142,11 +139,15 @@ void connWifi(){
   #endif
 }
 
-void connBluetooth(){
-  serialBT.begin("Rock_YOU"); //named "Rock_YOU" bluetooth begin
-  #if(DEBUG)
-    Serial.println("The device started, now you can pair it with bluetooth!");
-  #endif
+void getCmdFromBLE(){
+  if(BTSerial.available()){
+    lock = BTSerial.read();
+    Serial.write(lock);
+  }
+}
+
+void getCmdFromBLE(bool lock){
+  BTSerial.write(lock);
 }
 
 void setFirebase(){
@@ -262,27 +263,27 @@ void getGPSValue(){
 void open(){
   for(int posDegrees = 180; posDegrees >= 0; posDegrees--) {
     lockServo.write(posDegrees);
-    Serial.println(posDegrees);
     delay(20);
   }
   for(int posDegrees = 180; posDegrees >= 0; posDegrees--) {
     mainServo.write(posDegrees);
-    Serial.println(posDegrees);
     delay(20);
   }
+  lock = true;
+  getCmdFromBLE(lock);
   updateFirebase(LOCK,0);
 }
 
 void close(){
   for(int posDegrees = 0; posDegrees <= 270; posDegrees++) {
     mainServo.write(posDegrees);
-    Serial.println(posDegrees);
     delay(20);
   }
   for(int posDegrees = 0; posDegrees <= 270; posDegrees++) {
     lockServo.write(posDegrees);
-    Serial.println(posDegrees);
     delay(20);
   }
+  lock = false;
+  getCmdFromBLE(lock);
   updateFirebase(LOCK,1);
 }
