@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 class Marker: NSObject, MKAnnotation{
-    let coordinate: CLLocationCoordinate2D?
+    let coordinate: CLLocationCoordinate2D
     
     init(
         coordinate: CLLocationCoordinate2D
