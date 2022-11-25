@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class UserViewController: UIViewController {
 
+    let db = Firestore.firestore()
     
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var imageView: UIImageView!
@@ -17,9 +19,9 @@ class UserViewController: UIViewController {
     @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var listView: UITextView!
 
-    var nickString = "nickname"
-    var idString = "id입니당"
-    var passwordString = "password입니당"
+    var nickString = ""
+    var idString = ""
+    var passwordString = ""
     
     
     private lazy var nicknameLabel : UILabel = {
@@ -65,7 +67,9 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewInit()
+        
+        setUserData()
+        addBicycleList()
         
     }
     
@@ -81,11 +85,11 @@ class UserViewController: UIViewController {
         idView.layer.cornerRadius = 15
         passwordView.layer.cornerRadius = 15
         listView.layer.cornerRadius = 15
-        
         addViewLabel()
     }
    
     private func addViewLabel(){
+        
         nicknameView.addSubview(nicknameLabel)
         NSLayoutConstraint.activate([
             self.nicknameLabel.centerYAnchor.constraint(equalTo: self.nicknameView.centerYAnchor),
@@ -120,7 +124,56 @@ class UserViewController: UIViewController {
         ])
     }
     
-    private func addBicycleList(){
+    private func setUserData(){
         
+        db.collection("users").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    //print("\(document.documentID) => \(document.data())")
+
+                    guard let uid = document.get("uid") as? String else { return }
+                    if(uid == userid){
+                        self.nickString = userid
+                        self.idString = document.documentID
+                        self.passwordString = document.get("password") as! String
+                        
+                        self.viewInit()
+                    }
+                }
+            }
+        }
     }
+    
+    var bicycleListString = ""
+    
+    private func addBicycleList(){
+        db.collection("bicycle").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    guard let documentUid = document.get("uid") as? String else { return }
+                    //로그인한 유저의 uid와 저장된 uid가 같은 바이크 정보 불러오기
+                    if(documentUid == userid){
+                        let bicycleNickname = document.get("bicycleNickname")! as! String
+                        self.bicycleListString += bicycleNickname
+                        self.bicycleListString += "\n"
+                    }
+                }
+                self.listView.text = self.bicycleListString
+
+            }
+        }
+    }
+    
+    
+//
+//    func updatePeople()
+//    {
+//        for peop in personArray{
+//            thePeople.text = ""
+//        }
+//    }
 }

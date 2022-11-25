@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
+    
+    let db = Firestore.firestore()
     
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
@@ -154,12 +158,15 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
             }else{
                 
                 // 텍스트필드 문자열에서 cleaned Data 추출
-                let userName = self.nameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //whitespacesAndNewlines가 뭔지 알아보자ㅏ....
+                let bluetoothName = self.nameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //whitespacesAndNewlines가 뭔지 알아보자ㅏ....
                 let numberOfLocker = self.numberOfLockerTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 let nicknameBicycle = self.nicknameBicycleTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                print(userName)
+                print(bluetoothName)
                 print(numberOfLocker)
                 print(nicknameBicycle)
+                
+                //self.addServerBicycle(collection: "bicycle", document: bluetoothName, bicycleNickname: <#T##String#>, state: <#T##String#>, uid: <#T##String#>)
+                
                 
                 viewFlag = 3
                 stackView.isHidden = true
@@ -201,6 +208,20 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
         
         // show the alert
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func addServerBicycle(collection: String, document: String, bicycleNickname: String, state: String, uid: String){
+        db.collection(collection).document(document).setData([
+            "bicycleNickname": bicycleNickname,
+            "state": state,
+            "uid": uid
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
     }
     
     @IBAction func cancelButtonDidTap(_ sender: Any) {
