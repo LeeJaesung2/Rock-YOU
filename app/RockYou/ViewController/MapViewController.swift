@@ -2,8 +2,11 @@
 import UIKit
 import MapKit
 import CoreLocation
+import FirebaseFirestore
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
+    
+    var bicycleNicknameOfCell : String = ""
 
     // 하단바 아울렛
     @IBOutlet weak var underbarView: UIView!
@@ -21,9 +24,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var timer : Timer?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         // 하단 바 레이아웃
         underbarView.layer.cornerRadius = 40
         underbarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -44,17 +48,47 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if timer != nil && timer!.isValid{
             timer!.invalidate()
         }
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getData), userInfo: nil, repeats: true)
         
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getData), userInfo: nil, repeats: true)
+      //  setMapView(latitude: 37.6628 , longitude: 127.0317674 )
+            
     }
     
-    @objc func getData(){
-        //여기에 firebase map 값을 가져와서 아래 함수에 전달해 주시면 됩니다.
-        moveLocation(latitude: 37.6658609, longitude: 127.0317674 )
+    var latitude : CLLocationDegrees = 0.0
+    var longitude : CLLocationDegrees = 0.0
+    
+    @objc func getData (){
+        
+        getServerData()
+    }
+    
+    //여기에 firebase map 값을 가져오는 곳
+    private func getServerData() {
+        let db = Firestore.firestore()
+        db.collection("bicycle").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    guard let documentUid = document.get("uid") as? String else { return }
+                    guard let bicycleNickname = document.get("bicycleNickname") as? String else { return }
+
+                    //로그인한 유저의 uid와 클릭한 셀의 바이크별명에 대한 데이터 불러오기
+                    if(documentUid == userid && bicycleNickname == self.bicycleNicknameOfCell){
+                        print("\(document.documentID) => \(document.data())")
+                        let aaa = document.get("gps")
+                        let point = aaa as! GeoPoint
+                        self.latitude = point.latitude
+                        self.longitude = point.longitude
+                    }
+                    
+                    self.moveLocation(latitude: self.latitude, longitude: self.longitude )
+                }
+            }
+        }
     }
     
     private func moveLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees){
-    
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         
@@ -83,6 +117,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     @IBAction func backButtonDidTap(_ sender: Any) {
+        timer?.invalidate()
         dismiss(animated: true)
     }
 }

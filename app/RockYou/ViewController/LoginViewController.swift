@@ -23,12 +23,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtUserId: WLITextField!
     @IBOutlet weak var txtPassword: WLITextField!
     
+    @IBOutlet weak var loginBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = UIColor(red: 45, green: 45, blue: 45, alpha: 1)
+    
         mainView.layer.cornerRadius = 40
         mainView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
                 
+        loginBtn.layer.cornerRadius = 25
+        
         txtUserId.wliDelegate = self
         txtPassword.wliDelegate = self
         
@@ -76,8 +80,6 @@ class LoginViewController: UIViewController {
                     userid = uid as! String
                     // 비밀번호 필드만 가져오기
                     guard let property = document.get("password") else { return }
-                    print(type(of: property))
-                    print(type(of: password))
                     
                     // 비밀번호 같으면
                     if property as! String == password {
@@ -97,13 +99,7 @@ class LoginViewController: UIViewController {
                         self.txtPassword.text = ""
                         self.ShowAlert(alertmsg: "비밀번호를 확인해주세요")
                     }
-                    //전체 다큐먼트 들고오기
-                    //let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                    //print("Document data: \(dataDescription)")
-
-                } else {
-                    self.ShowAlert(alertmsg: "등록되지 않은 사용자입니다")
-                 }
+                }
             }
         }
     }
@@ -122,14 +118,6 @@ class LoginViewController: UIViewController {
 
 // MARK: - set WLITextField delegate method
 extension LoginViewController: WLITextFieldDelegate{
-    
-    
-    func WLITextFieldDidBeginEditing(_ textField: UITextField) {
-        print("WLITextFieldDidBeginEditing")
-    }
-    func WLITextFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        print("WLITextFieldDidEndEditing")
-    }
     
     func WLITextFielsShowAlertMessage(_ errorMessage: String) {
         self.ShowAlert(alertmsg: errorMessage)

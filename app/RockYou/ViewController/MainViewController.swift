@@ -25,6 +25,7 @@ struct LabelInfo {
     }
 }
 
+
 class MainViewController: UIViewController{
         
     let viewModel = LabelViewModel()
@@ -36,16 +37,23 @@ class MainViewController: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     private let refreshControl = UIRefreshControl()
 
+    
+    @IBOutlet weak var bicycleRegBtn: UIButton!
+    @IBOutlet weak var bicycleRemoveBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bicycleRegBtn.layer.cornerRadius = 20
+        bicycleRemoveBtn.layer.cornerRadius = 20
         
         refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
         collectionView.alwaysBounceVertical = true
         collectionView.refreshControl = refreshControl
-        
-        print(userid)
-        print(identification)
-        serverRead()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.syncCollectioview()
     }
     
     private func serverRead(){
@@ -231,6 +239,9 @@ class LabelViewModel {
 }
 
 
+// MapView에 넘길 변수
+var bicycleName : String = ""
+
 //컬렉션뷰 함수 모아둠
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
@@ -251,7 +262,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.layer.masksToBounds = false
         let labelInfo = viewModel.labelInfo(at: indexPath.item)
         cell.update(info: labelInfo)
-        
+                
         return cell
     }
     
@@ -272,8 +283,21 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     //셀 클릭 이밴트
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        
+        let labelInfo = viewModel.labelInfo(at: indexPath.item)
+        bicycleName = labelInfo.nickname
+        
         let cell = collectionView.cellForItem(at: indexPath) as! Cell
         performSegue(withIdentifier: "showSegue", sender: cell)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // 데이터를 전달할 뷰 컨트롤러가 존재하는지 확인
+        guard let mapViewController = segue.destination as? MapViewController else { return }
+        // 대상 뷰 컨트롤러 존재하면 데이터 전달
+        mapViewController.bicycleNicknameOfCell = bicycleName
+        mapViewController.modalPresentationStyle = .fullScreen
     }
     
 }

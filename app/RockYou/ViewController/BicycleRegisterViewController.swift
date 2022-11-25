@@ -31,9 +31,10 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
     //레이블
     @IBOutlet weak var stackView: UIStackView!
     
-    @IBOutlet weak var nameTextField: WLITextField!
     @IBOutlet weak var numberOfLockerTextField: WLITextField!
     @IBOutlet weak var nicknameBicycleTextField: WLITextField!
+    
+    @IBOutlet weak var nextBtn: UIButton!
     
     var viewFlag = 1
     
@@ -81,10 +82,11 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
         mainView.layer.cornerRadius = 40
         mainView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
+        nextBtn.layer.cornerRadius = 20
+        
         progressBarInit()
         
         stackView.isHidden = true
-        nameTextField.wliDelegate = self
         numberOfLockerTextField.wliDelegate = self
         nicknameBicycleTextField.wliDelegate = self
         
@@ -149,23 +151,20 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
             nextButton.setTitle("등록하기", for:.normal)
             self.viewFlag = 2
         } else if viewFlag == 2{
-            if self.nameTextField.text?.count == 0 {
-                ShowAlert(alertmsg: "이름 입력 하셈")
-            }else if self.numberOfLockerTextField.text?.count == 0 {
+            if self.numberOfLockerTextField.text?.count == 0 {
                 ShowAlert(alertmsg: "자물쇠 번호 입력 하셈")
             }else if self.nicknameBicycleTextField.text?.count == 0{
                 ShowAlert(alertmsg: "닉네임 입력 하셈")
             }else{
                 
                 // 텍스트필드 문자열에서 cleaned Data 추출
-                let bluetoothName = self.nameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //whitespacesAndNewlines가 뭔지 알아보자ㅏ....
+                //whitespacesAndNewlines가 뭔지 알아보자ㅏ....
                 let numberOfLocker = self.numberOfLockerTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 let nicknameBicycle = self.nicknameBicycleTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                print(bluetoothName)
                 print(numberOfLocker)
                 print(nicknameBicycle)
                 
-                //self.addServerBicycle(collection: "bicycle", document: bluetoothName, bicycleNickname: <#T##String#>, state: <#T##String#>, uid: <#T##String#>)
+                self.addServerBicycle(collection: "bicycle", document: numberOfLocker, bicycleNickname: nicknameBicycle, state: 0, uid: userid)
                 
                 
                 viewFlag = 3
@@ -210,7 +209,7 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func addServerBicycle(collection: String, document: String, bicycleNickname: String, state: String, uid: String){
+    func addServerBicycle(collection: String, document: String, bicycleNickname: String, state: Int, uid: String){
         db.collection(collection).document(document).setData([
             "bicycleNickname": bicycleNickname,
             "state": state,
