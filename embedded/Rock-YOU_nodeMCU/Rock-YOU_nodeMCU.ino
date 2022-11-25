@@ -39,7 +39,7 @@ FirebaseJson content;
 #define bicycleId "qf6r5zOcY4jXmmcniqX9" //PBMS identication key
 
 //GPIO pin
-#define vib_pin 2 //2 : shock sensor
+//#define vib_pin 2 //2 : shock sensor
 #define RX_pin 35
 #define TX_pin 3
 
@@ -54,7 +54,7 @@ unsigned long sendDataPrevMillis; //last data send time
 bool signupOK; //firebase login
 bool lock;
 bool conn_bluetooth;
-int pastvib; //sensing shock value  safe = 0, shock = 1
+//int pastvib; //sensing shock value  safe = 0, shock = 1
 int state;
 
 typedef enum {
@@ -83,8 +83,8 @@ void setup(){
   #if(DEBUG)
     Serial.begin(115200);
   #endif
-  //vibration sensor setup
-  pinMode(vib_pin, INPUT);
+  /*//vibration sensor setup
+  pinMode(vib_pin, INPUT);*/
   pinMode(RX_pin, INPUT);
   gss.begin(9600);
   connWifi();
