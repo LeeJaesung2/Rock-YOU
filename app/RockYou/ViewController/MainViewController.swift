@@ -9,23 +9,6 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-struct LabelInfo {
-    let nickname: String
-    let idnum: String
-    let state: String
-    let viewColor: UIColor
-    let labelColor: UIColor
-    
-    init (nickname: String, idnum: String, state: String, viewColor: UIColor, labelColor: UIColor) {
-        self.nickname = nickname
-        self.idnum = idnum
-        self.state = state
-        self.viewColor = viewColor
-        self.labelColor = labelColor
-    }
-}
-
-
 class MainViewController: UIViewController{
         
     let viewModel = LabelViewModel()
@@ -224,20 +207,6 @@ class Cell: UICollectionViewCell {
     }
     
 }
-
-// view model
-class LabelViewModel {
-    var labelInfoList: [LabelInfo] = []
-
-    var countOfList: Int {
-        return labelInfoList.count
-    }
-    
-    func labelInfo(at index: Int) -> LabelInfo {
-        return labelInfoList[index]
-    }
-}
-
 
 // MapView에 넘길 변수
 var bicycleName : String = ""
