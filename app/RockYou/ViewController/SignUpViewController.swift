@@ -57,7 +57,7 @@ class SignUpViewController: UIViewController {
         self.view.endEditing(true)
     }
 
-    @IBAction func btnSubmitAction(_ sender: UIButton) {
+    @IBAction func submitBtnDidTap(_ sender: UIButton) {
         if txtUserName.text?.count == 0 {
             self.ShowAlert(alertmsg: strAlertEnterUserName)
         }else if txtPassword.text?.count == 0 {

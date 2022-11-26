@@ -140,7 +140,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnSubmitAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Glv-eC-Qxx"/>
+                                            <action selector="submitBtnDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j56-HT-lt8"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7l-XE-HMz">
@@ -496,7 +496,7 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="btnBicycleRegisterAction:" destination="N5p-ct-6ud" eventType="touchUpInside" id="bHD-FU-vTx"/>
+                                    <action selector="bicycleRegisterBtnDidTap:" destination="N5p-ct-6ud" eventType="touchUpInside" id="xKR-PA-RNp"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="당신의 자전거를 안전하게 보관하세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxN-zF-f0p">
@@ -613,7 +613,7 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="btnBicycleRemoveAction:" destination="N5p-ct-6ud" eventType="touchUpInside" id="5rH-JV-2Ah"/>
+                                    <action selector="bicycleRemoveBtnDidTap:" destination="N5p-ct-6ud" eventType="touchUpInside" id="pwH-C4-3Xf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1008,7 +1008,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnSubmitAction:" destination="Ece-og-deY" eventType="touchUpInside" id="URV-lf-AZH"/>
+                                            <action selector="submitBtnDidTap:" destination="Ece-og-deY" eventType="touchUpInside" id="AkF-eq-VgR"/>
                                         </connections>
                                     </button>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B02-hK-ITI">

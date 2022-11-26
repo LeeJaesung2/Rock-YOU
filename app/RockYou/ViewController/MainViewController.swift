@@ -102,7 +102,7 @@ class MainViewController: UIViewController{
     }
     
     // 등록 버튼 클릭
-    @IBAction func btnBicycleRegisterAction(_ sender: Any) {
+    @IBAction func bicycleRegisterBtnDidTap(_ sender: Any) {
         guard let regVC = self.storyboard?.instantiateViewController(withIdentifier: "BicycleRegisterViewController") as? BicycleRegisterViewController else { return }
         regVC.modalPresentationStyle = .fullScreen
         print("이거는?")
@@ -111,7 +111,7 @@ class MainViewController: UIViewController{
     }
     
     // 삭제 버튼 클릭
-    @IBAction func btnBicycleRemoveAction(_ sender: Any) {
+    @IBAction func bicycleRemoveBtnDidTap(_ sender: Any) {
         let title = "자전거 삭제"
         let message = "삭제하고 싶은 자전거의 별명을 입력하세요"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

@@ -59,7 +59,7 @@ class LoginViewController: UIViewController {
     
     let db = Firestore.firestore()
 
-    @IBAction func btnSubmitAction(_ sender: UIButton) {
+    @IBAction func submitBtnDidTap(_ sender: UIButton) {
         if txtUserId.text?.count == 0 {
             self.ShowAlert(alertmsg: strAlertEnterUserName)
         }else if txtPassword.text?.count == 0 {
