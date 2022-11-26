@@ -1,33 +1,34 @@
-#include "MyWifi.h"
-#include "MyBletooth.h"
-#include "MyFirebase.h"
-#include "MyGPS.h"
-#include "Value.h"
-#include "MyMotor.h"
+#include <MyWifi.h>
+#include <MyBluetooth.h>
+#include <MyFirebase.h>
+#include <MyGPS.h>
+#include <Value.h>
+#include <MyMotor.h>
+
+MyBluetoothClass BLE;
+MyFirebaseClass MyFirebase;
+MyGPSClass GPS;
+MyMotorClass Motor;
+MyWifiClass Wifi;
+ValueClass Value; //here
 
 void setup(){
-  initValue();
-  /*//vibration sensor setup
-  pinMode(vib_pin, INPUT);*/
-  mainServo.attach(MainGear_pin);
-  lockServo.attach(LockGear_pin);
-  pinMode(GPS_RX_pin, INPUT);
-  pinMode(BLE_RX_pin, INPUT);
-  pinMode(BLE_TX_pin, OUTPUT);
+  Value.initValue();
+  Motor.setMotor();
+  GPS.setGPSPin();
+  BLE.setBLEPin();
   #if(DEBUG)
     Serial.begin(115200);
   #endif
-  gss.begin(9600);
-  BTSerial.begin(9600);
-  
-  connWifi();
-  setFirebase();
+  Wifi.connWifi();
+  MyFirebase.setFirebase();
   
 }
 
 void loop(){
+  Value.lockState = Motor.unlockBicycle(Value.lockState);
+  MyFirebase.updateFirebase(Value.LOCK, Value.lockState);
+  Value.lockState = Motor.lockBicycle(Value.lockState);
+  MyFirebase.updateFirebase(Value.LOCK, Value.lockState);
   
 }
-
-
-

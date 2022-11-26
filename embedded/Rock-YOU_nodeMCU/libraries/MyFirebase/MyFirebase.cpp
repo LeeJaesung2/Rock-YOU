@@ -1,6 +1,9 @@
 #include "MyFirebase.h"
+
+ValueClass Value;
+
 /*setting Firebase firestore*/
-void setFirebase(){
+void MyFirebaseClass::setFirebase(){
     // firebase key & auth
     config.api_key = API_KEY;
     auth.user.email = USER_EMAIL;
@@ -16,16 +19,16 @@ void setFirebase(){
 }
 
 /*update value to firebase firestore*/
-void updateFirebase(int value, int data){
+void MyFirebaseClass::updateFirebase(int value, int data){
     String path = "bicycle/qf6r5zOcY4jXmmcniqX9";
     String jsonPath;
     String updateMask;
     switch(value){
-        case LOCK:
+        case Value.LOCK:
             jsonPath = "fields/lock/integerValue";
             updateMask = "lock";
             break;
-        case STATE:
+        case Value.STATE:
             jsonPath = "fields/state/integerValue";
             updateMask = "state";
             break;
@@ -42,16 +45,16 @@ void updateFirebase(int value, int data){
 }
 
 /*update GPS value to firebase firestore*/
-void updateGPSFirebase(int value, float data){
+void MyFirebaseClass::updateGPSFirebase(int value, float data){
     String path = "bicycle/qf6r5zOcY4jXmmcniqX9";
     String jsonPath;
     String updateMask;
     switch(value){
-        case LONGITUDE:
+        case Value.LONGITUDE:
             jsonPath = "fields/GPS/geoPointValue/longitude";
             updateMask = "GPS";
             break;
-        case LATITUDE:
+        case Value.LATITUDE:
             jsonPath = "fields/GPS/geoPointValue/latitude";
             updateMask = "GPS";
             break;

@@ -1,3 +1,5 @@
+#ifndef __MYWIFI_H__
+#define __MYWIFI_H__
 #include <WiFi.h>
 #include "Value.h"
 
@@ -5,4 +7,10 @@
 #define WIFI_SSID "Jaesung’s iPhone"
 #define WIFI_PASSWORD "87654321"
 
-void connWifi();
+class MyWifiClass{
+    public:
+        void connWifi();
+};
+
+
+#endif
