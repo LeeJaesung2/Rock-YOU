@@ -1,7 +1,7 @@
 #include "MyWifi.h"
 
 /*Wi-fi connecting function*/
-void connWifi(){
+void MyWifiClass::connWifi(){
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
     #if(DEBUG)
         Serial.print("Connecting to Wi-Fi");

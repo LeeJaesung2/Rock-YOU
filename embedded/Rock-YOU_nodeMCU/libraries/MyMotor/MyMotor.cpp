@@ -1,7 +1,12 @@
 #include "MyMotor.h"
 
+void MyMotorClass::setMotor(){
+    mainServo.attach(MainGear_pin);
+    lockServo.attach(LockGear_pin);
+}
+
 /*unlock using motor*/
-void open(){
+bool MyMotorClass::unlockBicycle(bool lockState){
     for(int posDegrees = 180; posDegrees >= 0; posDegrees--) {
         lockServo.write(posDegrees);
         delay(20);
@@ -10,13 +15,12 @@ void open(){
         mainServo.write(posDegrees);
         delay(20);
     }
-    lock = true;
-    sendCmdToBLE(lock);
-    updateFirebase(LOCK,0);
+    lockState = true;
+    return lockState;
 }
 
 /*lock usgin motor*/
-void close(){
+bool MyMotorClass::lockBicycle(bool lockState){
     for(int posDegrees = 0; posDegrees <= 270; posDegrees++) {
         mainServo.write(posDegrees);
         delay(20);
@@ -25,7 +29,6 @@ void close(){
         lockServo.write(posDegrees);
         delay(20);
     }
-    lock = false;
-    sendCmdToBLE(lock);
-    updateFirebase(LOCK,1);
+    lockState = false;
+    return lockState;
 }
