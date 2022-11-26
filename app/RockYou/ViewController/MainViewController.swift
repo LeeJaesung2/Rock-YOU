@@ -9,46 +9,38 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-struct LabelInfo {
-    let nickname: String
-    let idnum: String
-    let state: String
-    let viewColor: UIColor
-    let labelColor: UIColor
-    
-    init (nickname: String, idnum: String, state: String, viewColor: UIColor, labelColor: UIColor) {
-        self.nickname = nickname
-        self.idnum = idnum
-        self.state = state
-        self.viewColor = viewColor
-        self.labelColor = labelColor
-    }
-}
-
 class MainViewController: UIViewController{
         
-    let viewModel = LabelViewModel()
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
+    let labelViewModel = LabelViewModel()
     let db = Firestore.firestore()
     
+    let check = StateCheckAndChange()
     
     @IBOutlet weak var collectionView: UICollectionView!
     private let refreshControl = UIRefreshControl()
 
+    
+    @IBOutlet weak var bicycleRegBtn: UIButton!
+    @IBOutlet weak var bicycleRemoveBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bicycleRegBtn.layer.cornerRadius = 20
+        bicycleRemoveBtn.layer.cornerRadius = 20
         
         refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
         collectionView.alwaysBounceVertical = true
         collectionView.refreshControl = refreshControl
-        
-        print(userid)
-        print(identification)
-        serverRead()
     }
     
-    private func serverRead(){
+    override func viewWillAppear(_ animated: Bool) {
+        self.syncCollectioview()
+    }
+    
+    private func readServerData(){
         // get user document
         db.collection("bicycle").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -62,16 +54,26 @@ class MainViewController: UIViewController{
                         let bicycleNickname = document.get("bicycleNickname") as! String
                         let idnum = document.documentID
                         let state = document.get("state") as! Int
-                        let viewColor = self.stateCheckViewChange(state: state)
-                        let labelColor = self.stateCheckLabelColorChange(state: state)
-                        let label = self.stateCheckLabelChange(state: state)
-                        let labelInfo = LabelInfo(nickname: bicycleNickname, idnum: idnum, state: label, viewColor: viewColor, labelColor: labelColor)
-                        self.viewModel.labelInfoList.append(labelInfo) //viewModel 전역변수
+                        let viewColor = self.check.stateCheckViewChange(state: state)
+                        let labelColor = self.check.stateCheckLabelColorChange(state: state)
+                        let label = self.check.stateCheckLabelChange(state: state)
+                        let labelInfo = LabelData(nickname: bicycleNickname, idnum: idnum, state: label, viewColor: viewColor, labelColor: labelColor)
+                        self.labelViewModel.labelDataList.append(labelInfo) //viewModel 전역변수
                         self.collectionView.reloadData() // 데이터 추가 후 컬렉션뷰 한번 리로딩 해줘서 바로 화면에 나타나도록
                     }
                 }
             }
         }
+    }
+    
+    // 서버의 값으로 컬력센뷰 동기화
+    private func syncCollectioview(){
+        // 컬렉션뷰의 데이터 삭제
+        let removeCount = self.labelViewModel.countOfList
+        for _ in 0..<removeCount{
+            self.labelViewModel.labelDataList.removeFirst()
+        }
+        self.readServerData()
     }
     
     private func removeServerData(collection:String, document:String){
@@ -84,36 +86,6 @@ class MainViewController: UIViewController{
             }
         }
         
-    }
-    
-    func stateCheckViewChange(state : Int) -> UIColor{
-        if state == 0{ //잠금중
-            return UIColor.yellow
-        } else if state == 1{ //주행중
-            return UIColor.white
-        } else {
-            return UIColor.red
-        }
-    }
-    
-    func stateCheckLabelColorChange(state : Int) -> UIColor{
-        if state == 0{ //잠금중
-            return UIColor.black
-        } else if state == 1{ //주행중
-            return UIColor.black
-        } else {
-            return UIColor.red
-        }
-    }
-    
-    func stateCheckLabelChange(state : Int) -> String{
-        if state == 0{ //잠금중
-            return "잠금중"
-        } else if state == 1{ //주행중
-            return "주행중"
-        } else {
-            return "도난!!"
-        }
     }
     
     @objc
@@ -129,25 +101,17 @@ class MainViewController: UIViewController{
         }
     }
     
-    // 서버의 값으로 컬력센뷰 동기화
-    func syncCollectioview(){
-        // 컬렉션뷰의 데이터 삭제
-        let removeCount = self.viewModel.countOfList
-        for _ in 0..<removeCount{
-            self.viewModel.labelInfoList.removeFirst()
-        }
-        self.serverRead()
-    }
-    
     // 등록 버튼 클릭
-    @IBAction func bicycleRegisterBtnDidTap(_ sender: Any) {
+    @IBAction func btnBicycleRegisterAction(_ sender: Any) {
         guard let regVC = self.storyboard?.instantiateViewController(withIdentifier: "BicycleRegisterViewController") as? BicycleRegisterViewController else { return }
         regVC.modalPresentationStyle = .fullScreen
+        print("이거는?")
         self.present(regVC, animated: true)
+        print("이게 안되는?")
     }
     
     // 삭제 버튼 클릭
-    @IBAction func bicycleRemoveBtnDidTap(_ sender: Any) {
+    @IBAction func btnBicycleRemoveAction(_ sender: Any) {
         let title = "자전거 삭제"
         let message = "삭제하고 싶은 자전거의 별명을 입력하세요"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -195,6 +159,37 @@ class MainViewController: UIViewController{
     }
 }
 
+class StateCheckAndChange{
+    func stateCheckViewChange(state : Int) -> UIColor{
+        if state == 0{ //잠금중
+            return UIColor.yellow
+        } else if state == 1{ //주행중
+            return UIColor.white
+        } else {
+            return UIColor.red
+        }
+    }
+    
+    func stateCheckLabelColorChange(state : Int) -> UIColor{
+        if state == 0{ //잠금중
+            return UIColor.black
+        } else if state == 1{ //주행중
+            return UIColor.black
+        } else {
+            return UIColor.red
+        }
+    }
+    
+    func stateCheckLabelChange(state : Int) -> String{
+        if state == 0{ //잠금중
+            return "잠금중"
+        } else if state == 1{ //주행중
+            return "주행중"
+        } else {
+            return "도난!!"
+        }
+    }
+}
 
 class Cell: UICollectionViewCell {
     @IBOutlet weak var nicknameLabel: UILabel!
@@ -202,7 +197,7 @@ class Cell: UICollectionViewCell {
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var stateColorView: UIView!
     
-    func update(info: LabelInfo) {
+    func update(info: LabelData) {
         nicknameLabel.text = info.nickname
         idnumLabel.text = info.idnum
         stateLabel.text = info.state
@@ -217,25 +212,14 @@ class Cell: UICollectionViewCell {
     
 }
 
-// view model
-class LabelViewModel {
-    var labelInfoList: [LabelInfo] = []
-
-    var countOfList: Int {
-        return labelInfoList.count
-    }
-    
-    func labelInfo(at index: Int) -> LabelInfo {
-        return labelInfoList[index]
-    }
-}
-
+// MapView에 넘길 변수
+var bicycleName : String = ""
 
 //컬렉션뷰 함수 모아둠
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.countOfList
+        return labelViewModel.countOfList
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -249,9 +233,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.layer.shadowRadius = 5.0
         cell.layer.shadowOpacity = 1
         cell.layer.masksToBounds = false
-        let labelInfo = viewModel.labelInfo(at: indexPath.item)
+        let labelInfo = labelViewModel.labelInfo(at: indexPath.item)
         cell.update(info: labelInfo)
-        
+                
         return cell
     }
     
@@ -272,8 +256,21 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     //셀 클릭 이밴트
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        
+        let labelInfo = labelViewModel.labelInfo(at: indexPath.item)
+        bicycleName = labelInfo.nickname
+        
         let cell = collectionView.cellForItem(at: indexPath) as! Cell
         performSegue(withIdentifier: "showSegue", sender: cell)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // 데이터를 전달할 뷰 컨트롤러가 존재하는지 확인
+        guard let mapViewController = segue.destination as? MapViewController else { return }
+        // 대상 뷰 컨트롤러 존재하면 데이터 전달
+        mapViewController.bicycleNicknameOfCell = bicycleName
+        mapViewController.modalPresentationStyle = .fullScreen
     }
     
 }

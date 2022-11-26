@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F4F6D792932358400C41903 /* AlarmTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F6D782932358400C41903 /* AlarmTableModel.swift */; };
 		4F525D61290E75A6007A76FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F525D60290E75A6007A76FF /* GoogleService-Info.plist */; };
 		4F52F8182924CF700087758E /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F52F8172924CF700087758E /* AlarmViewController.swift */; };
 		4F52F81A2924CF7D0087758E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F52F8192924CF7D0087758E /* UserViewController.swift */; };
 		4F52F81C2924D9590087758E /* BicycleRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F52F81B2924D9590087758E /* BicycleRegisterViewController.swift */; };
 		4F5470BD28EFB1BD00C0F673 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */; };
+		4F65A91229322E65008AB1E7 /* LabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A91129322E65008AB1E7 /* LabelViewModel.swift */; };
 		4F9DB32F28F64C7700B2C338 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DB32E28F64C7700B2C338 /* MainViewController.swift */; };
 		4FF1ED1A28FC377300F5458D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1ED1928FC377300F5458D /* MapViewController.swift */; };
 		4FFF168028ED0514003ADFAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF167F28ED0514003ADFAA /* AppDelegate.swift */; };
@@ -21,16 +23,19 @@
 		4FFF168928ED0514003ADFAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FFF168828ED0514003ADFAA /* Assets.xcassets */; };
 		4FFF168C28ED0514003ADFAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FFF168A28ED0514003ADFAA /* LaunchScreen.storyboard */; };
 		4FFF169428ED1069003ADFAA /* WLITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF169328ED1069003ADFAA /* WLITextField.swift */; };
+		4FFFCD1329313501004857A5 /* PermanentMarker-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FFFCD1229313501004857A5 /* PermanentMarker-Regular.ttf */; };
 		9F4AC603DA2FB08789A3D6CC /* Pods_RockYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E07FF484EFDEB11990FB5286 /* Pods_RockYou.framework */; };
 		C7B44727292CF6E500B272A4 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B44726292CF6E500B272A4 /* Marker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F4F6D782932358400C41903 /* AlarmTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableModel.swift; sourceTree = "<group>"; };
 		4F525D60290E75A6007A76FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F52F8172924CF700087758E /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		4F52F8192924CF7D0087758E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		4F52F81B2924D9590087758E /* BicycleRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleRegisterViewController.swift; sourceTree = "<group>"; };
 		4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4F65A91129322E65008AB1E7 /* LabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewModel.swift; sourceTree = "<group>"; };
 		4F9DB32E28F64C7700B2C338 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4FF1ED1928FC377300F5458D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4FFF167C28ED0514003ADFAA /* RockYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +47,7 @@
 		4FFF168B28ED0514003ADFAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FFF168D28ED0514003ADFAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FFF169328ED1069003ADFAA /* WLITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLITextField.swift; sourceTree = "<group>"; };
+		4FFFCD1229313501004857A5 /* PermanentMarker-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PermanentMarker-Regular.ttf"; sourceTree = "<group>"; };
 		C7B44726292CF6E500B272A4 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		D0EF711093D9FCDD9B80B538 /* Pods-RockYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RockYou.debug.xcconfig"; path = "Target Support Files/Pods-RockYou/Pods-RockYou.debug.xcconfig"; sourceTree = "<group>"; };
 		E07FF484EFDEB11990FB5286 /* Pods_RockYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RockYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,12 +71,11 @@
 			children = (
 				4FFF168328ED0514003ADFAA /* LoginViewController.swift */,
 				4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */,
-				4FF1ED1928FC377300F5458D /* MapViewController.swift */,
 				4F9DB32E28F64C7700B2C338 /* MainViewController.swift */,
+				4FF1ED1928FC377300F5458D /* MapViewController.swift */,
 				4F52F8172924CF700087758E /* AlarmViewController.swift */,
 				4F52F8192924CF7D0087758E /* UserViewController.swift */,
 				4F52F81B2924D9590087758E /* BicycleRegisterViewController.swift */,
-				C7B44726292CF6E500B272A4 /* Marker.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -87,8 +92,19 @@
 			isa = PBXGroup;
 			children = (
 				4FFF169328ED1069003ADFAA /* WLITextField.swift */,
+				C7B44726292CF6E500B272A4 /* Marker.swift */,
+				4FFFCD1229313501004857A5 /* PermanentMarker-Regular.ttf */,
 			);
 			path = helper;
+			sourceTree = "<group>";
+		};
+		4F65A91029322E1F008AB1E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F65A91129322E65008AB1E7 /* LabelViewModel.swift */,
+				4F4F6D782932358400C41903 /* AlarmTableModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4FFF167328ED0514003ADFAA = {
@@ -115,6 +131,7 @@
 				4FFF167F28ED0514003ADFAA /* AppDelegate.swift */,
 				4FFF168128ED0514003ADFAA /* SceneDelegate.swift */,
 				4F568BF628FF7FEF0092D287 /* helper */,
+				4F65A91029322E1F008AB1E7 /* Model */,
 				4F568BF528FF7FDA0092D287 /* View */,
 				4F568BF428FF7FBB0092D287 /* ViewController */,
 				4FFF168828ED0514003ADFAA /* Assets.xcassets */,
@@ -205,6 +222,7 @@
 				4FFF168C28ED0514003ADFAA /* LaunchScreen.storyboard in Resources */,
 				4F525D61290E75A6007A76FF /* GoogleService-Info.plist in Resources */,
 				4FFF168928ED0514003ADFAA /* Assets.xcassets in Resources */,
+				4FFFCD1329313501004857A5 /* PermanentMarker-Regular.ttf in Resources */,
 				4FFF168728ED0514003ADFAA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,12 +277,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F52F8182924CF700087758E /* AlarmViewController.swift in Sources */,
+				4F4F6D792932358400C41903 /* AlarmTableModel.swift in Sources */,
 				4F52F81A2924CF7D0087758E /* UserViewController.swift in Sources */,
 				4F9DB32F28F64C7700B2C338 /* MainViewController.swift in Sources */,
 				4FFF168428ED0514003ADFAA /* LoginViewController.swift in Sources */,
 				4FFF168028ED0514003ADFAA /* AppDelegate.swift in Sources */,
 				4FFF169428ED1069003ADFAA /* WLITextField.swift in Sources */,
 				4FFF168228ED0514003ADFAA /* SceneDelegate.swift in Sources */,
+				4F65A91229322E65008AB1E7 /* LabelViewModel.swift in Sources */,
 				C7B44727292CF6E500B272A4 /* Marker.swift in Sources */,
 				4F52F81C2924D9590087758E /* BicycleRegisterViewController.swift in Sources */,
 				4F5470BD28EFB1BD00C0F673 /* SignUpViewController.swift in Sources */,
@@ -418,6 +438,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RockYou/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "걍 해줘";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "걍 해줘";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -447,6 +470,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RockYou/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "걍 해줘";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "걍 해줘";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
