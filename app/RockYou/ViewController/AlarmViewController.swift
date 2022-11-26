@@ -50,5 +50,4 @@ extension AlarmViewController: UITableViewDelegate, UITableViewDataSource{
               
           } else if editingStyle == .insert{}
     }
-    
 }
