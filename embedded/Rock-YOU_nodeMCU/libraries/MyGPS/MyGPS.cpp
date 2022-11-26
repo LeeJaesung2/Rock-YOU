@@ -1,9 +1,9 @@
 #include "MyGPS.h"
 
 ValueClass value;
+SoftwareSerial gss(GPS_RX_pin, GPS_TX_pin);
 
 void MyGPSClass::setGPSPin(){
-    SoftwareSerial gss(GPS_RX_pin, GPS_TX_pin);
     pinMode(GPS_RX_pin, INPUT);
     gss.begin(9600);
 }

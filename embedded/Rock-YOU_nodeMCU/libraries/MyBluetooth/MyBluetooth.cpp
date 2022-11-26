@@ -1,7 +1,8 @@
 #include "MyBluetooth.h"
 
+SoftwareSerial BTSerial(BLE_RX_pin, BLE_TX_pin);
+
 void MyBluetoothClass::setBLEPin(){
-    SoftwareSerial BTSerial(BLE_RX_pin, BLE_TX_pin);
     pinMode(BLE_RX_pin, INPUT);
     pinMode(BLE_TX_pin, OUTPUT);
     BTSerial.begin(9600);

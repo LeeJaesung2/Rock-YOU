@@ -10,7 +10,7 @@ MyFirebaseClass MyFirebase;
 MyGPSClass GPS;
 MyMotorClass Motor;
 MyWifiClass Wifi;
-ValueClass Value; //here
+ValueClass Value; //need to fix
 
 void setup(){
   Value.initValue();

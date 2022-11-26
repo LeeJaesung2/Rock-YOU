@@ -1,7 +1,6 @@
 #ifndef __MYFIREBASE_H__
 #define __MYFIREBASE_H__
 #include <Firebase_ESP_Client.h>
-#include <addons/TokenHelper.h> //Provide the token generation process info.
 #include "Value.h"
 
 // firebas key & url

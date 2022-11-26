@@ -1,4 +1,5 @@
 #include "MyFirebase.h"
+#include <addons/TokenHelper.h>
 
 ValueClass Value;
 
