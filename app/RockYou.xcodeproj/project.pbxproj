@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0072C6293205180040E827 /* AlarmTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0072C5293205180040E827 /* AlarmTableModel.swift */; };
+		4F0072C82932055B0040E827 /* LabelviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0072C72932055B0040E827 /* LabelviewModel.swift */; };
 		4F525D61290E75A6007A76FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F525D60290E75A6007A76FF /* GoogleService-Info.plist */; };
 		4F52F8182924CF700087758E /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F52F8172924CF700087758E /* AlarmViewController.swift */; };
 		4F52F81A2924CF7D0087758E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F52F8192924CF7D0087758E /* UserViewController.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F0072C5293205180040E827 /* AlarmTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmTableModel.swift; path = ../../../../../Documents/AlarmTableModel.swift; sourceTree = "<group>"; };
+		4F0072C72932055B0040E827 /* LabelviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelviewModel.swift; sourceTree = "<group>"; };
 		4F525D60290E75A6007A76FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F52F8172924CF700087758E /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		4F52F8192924CF7D0087758E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F0072C4293205020040E827 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F0072C5293205180040E827 /* AlarmTableModel.swift */,
+				4F0072C72932055B0040E827 /* LabelviewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4F568BF428FF7FBB0092D287 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +131,7 @@
 				4FFF167F28ED0514003ADFAA /* AppDelegate.swift */,
 				4FFF168128ED0514003ADFAA /* SceneDelegate.swift */,
 				4F568BF628FF7FEF0092D287 /* helper */,
+				4F0072C4293205020040E827 /* Model */,
 				4F568BF528FF7FDA0092D287 /* View */,
 				4F568BF428FF7FBB0092D287 /* ViewController */,
 				4FFF168828ED0514003ADFAA /* Assets.xcassets */,
@@ -272,7 +286,9 @@
 				C7B44727292CF6E500B272A4 /* Marker.swift in Sources */,
 				4F52F81C2924D9590087758E /* BicycleRegisterViewController.swift in Sources */,
 				4F5470BD28EFB1BD00C0F673 /* SignUpViewController.swift in Sources */,
+				4F0072C6293205180040E827 /* AlarmTableModel.swift in Sources */,
 				4FF1ED1A28FC377300F5458D /* MapViewController.swift in Sources */,
+				4F0072C82932055B0040E827 /* LabelviewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

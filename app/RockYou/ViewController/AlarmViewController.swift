@@ -7,11 +7,7 @@
 
 import UIKit
 
-var tableItems: [String] = [
-    "1",
-    "2",
-    "3"
-]
+let viewModel = AlarmTableModel()
 
 class AlarmViewController: UIViewController {
 
@@ -26,21 +22,22 @@ class AlarmViewController: UIViewController {
         
         tableview.delegate = self
         tableview.dataSource = self
+        
+        viewModel.alarmDatas.append("1")
+        viewModel.alarmDatas.append("2")
+        viewModel.alarmDatas.append("3")
     }
     
-    
-    
-
 }
 
 extension AlarmViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableItems.count
+        return viewModel.countOfList
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = tableItems[indexPath.row]
+        cell.textLabel?.text = viewModel.labelInfo(at: indexPath.row)
         return cell
     }
     
@@ -48,10 +45,9 @@ extension AlarmViewController: UITableViewDelegate, UITableViewDataSource{
           
           if editingStyle == .delete {
               
-              tableItems.remove(at: indexPath.row)
+              viewModel.alarmDatas.remove(at: indexPath.row)
               tableView.deleteRows(at: [indexPath], with: .fade)
               
           } else if editingStyle == .insert{}
     }
-    
 }
