@@ -225,20 +225,6 @@ class Cell: UICollectionViewCell {
     
 }
 
-// view model
-class LabelViewModel {
-    var labelInfoList: [LabelInfo] = []
-
-    var countOfList: Int {
-        return labelInfoList.count
-    }
-    
-    func labelInfo(at index: Int) -> LabelInfo {
-        return labelInfoList[index]
-    }
-}
-
-
 // MapView에 넘길 변수
 var bicycleName : String = ""
 
