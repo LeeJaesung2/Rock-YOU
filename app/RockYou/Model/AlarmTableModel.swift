@@ -12,7 +12,7 @@ class AlarmTableModel {
         return alarmDatas.count
     }
     
-    func labelInfo(at index: Int) -> String {
+    func alarmInfo(at index: Int) -> String {
         return alarmDatas[index]
     }
 }

@@ -31,8 +31,8 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
     //레이블
     @IBOutlet weak var stackView: UIStackView!
     
-    @IBOutlet weak var numberOfLockerTextField: WLITextField!
-    @IBOutlet weak var nicknameBicycleTextField: WLITextField!
+    @IBOutlet weak var txtNumberOfLocker: WLITextField!
+    @IBOutlet weak var txtNicknameBicycle: WLITextField!
     
     @IBOutlet weak var nextBtn: UIButton!
     
@@ -87,8 +87,8 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
         progressBarInit()
         
         stackView.isHidden = true
-        numberOfLockerTextField.wliDelegate = self
-        nicknameBicycleTextField.wliDelegate = self
+        txtNumberOfLocker.wliDelegate = self
+        txtNicknameBicycle.wliDelegate = self
         
         
         // 초기화면 label
@@ -151,20 +151,18 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
             nextButton.setTitle("등록하기", for:.normal)
             self.viewFlag = 2
         } else if viewFlag == 2{
-            if self.numberOfLockerTextField.text?.count == 0 {
+            if self.txtNumberOfLocker.text?.count == 0 {
                 ShowAlert(alertmsg: "자물쇠 번호 입력 하셈")
-            }else if self.nicknameBicycleTextField.text?.count == 0{
+            }else if self.txtNicknameBicycle.text?.count == 0{
                 ShowAlert(alertmsg: "닉네임 입력 하셈")
             }else{
                 
                 // 텍스트필드 문자열에서 cleaned Data 추출
                 //whitespacesAndNewlines가 뭔지 알아보자ㅏ....
-                let numberOfLocker = self.numberOfLockerTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                let nicknameBicycle = self.nicknameBicycleTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                print(numberOfLocker)
-                print(nicknameBicycle)
+                let numberOfLocker = self.txtNumberOfLocker.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let nicknameBicycle = self.txtNicknameBicycle.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 
-                self.addServerBicycle(collection: "bicycle", document: numberOfLocker, bicycleNickname: nicknameBicycle, state: 0, uid: userid)
+                self.addServerData(collection: "bicycle", document: numberOfLocker, bicycleNickname: nicknameBicycle, state: 0, uid: userid)
                 
                 
                 viewFlag = 3
@@ -209,7 +207,7 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func addServerBicycle(collection: String, document: String, bicycleNickname: String, state: Int, uid: String){
+    func addServerData(collection: String, document: String, bicycleNickname: String, state: Int, uid: String){
         db.collection(collection).document(document).setData([
             "bicycleNickname": bicycleNickname,
             "state": state,

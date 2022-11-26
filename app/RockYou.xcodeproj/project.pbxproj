@@ -71,8 +71,8 @@
 			children = (
 				4FFF168328ED0514003ADFAA /* LoginViewController.swift */,
 				4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */,
-				4FF1ED1928FC377300F5458D /* MapViewController.swift */,
 				4F9DB32E28F64C7700B2C338 /* MainViewController.swift */,
+				4FF1ED1928FC377300F5458D /* MapViewController.swift */,
 				4F52F8172924CF700087758E /* AlarmViewController.swift */,
 				4F52F8192924CF7D0087758E /* UserViewController.swift */,
 				4F52F81B2924D9590087758E /* BicycleRegisterViewController.swift */,

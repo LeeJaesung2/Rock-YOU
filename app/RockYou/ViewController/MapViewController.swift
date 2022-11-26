@@ -18,7 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // 위치조정 controller
     private let locationManager = CLLocationManager()
     // mapMark
-    private let mark = Marker(coordinate: CLLocationCoordinate2D(latitude: 37.6658609, longitude: 127.0317674))
+    private let marker = Marker(coordinate: CLLocationCoordinate2D(latitude: 37.6658609, longitude: 127.0317674))
     //mapView 아울렛
     @IBOutlet weak var mapView: MKMapView!
     
@@ -59,11 +59,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @objc func getData (){
         
-        getServerData()
+        getGPSData()
     }
     
     //여기에 firebase map 값을 가져오는 곳
-    private func getServerData() {
+    private func getGPSData() {
         let db = Firestore.firestore()
         db.collection("bicycle").getDocuments() { (querySnapshot, err) in
             if let err = err {

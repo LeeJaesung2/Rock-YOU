@@ -455,14 +455,14 @@
                         <outlet property="mainView" destination="XZC-6X-Klj" id="5cq-7O-Yye"/>
                         <outlet property="nextBtn" destination="tKh-go-d6e" id="AcX-th-9Cz"/>
                         <outlet property="nextButton" destination="tKh-go-d6e" id="gRh-qG-evb"/>
-                        <outlet property="nicknameBicycleTextField" destination="UiP-Qo-ZbZ" id="ZGc-CV-RIc"/>
-                        <outlet property="numberOfLockerTextField" destination="AFh-vL-C7T" id="Bru-aD-7pV"/>
                         <outlet property="progressViewWidthConstraint" destination="anB-pQ-tSX" id="OLe-N6-uab"/>
                         <outlet property="progressViewWidthConstraint2" destination="dv5-Se-PhN" id="Vqa-pP-SMX"/>
                         <outlet property="secondCircleView" destination="CAQ-vU-dAz" id="BjS-MI-UzH"/>
                         <outlet property="secondToTirldConstraint" destination="bYW-m3-u00" id="kS2-mQ-sdF"/>
                         <outlet property="stackView" destination="DSH-zP-NQo" id="IdE-zQ-Loh"/>
                         <outlet property="thirdCircleView" destination="qcB-ml-3P6" id="4ac-n6-I1K"/>
+                        <outlet property="txtNicknameBicycle" destination="UiP-Qo-ZbZ" id="7dv-1n-9O7"/>
+                        <outlet property="txtNumberOfLocker" destination="AFh-vL-C7T" id="m9Z-4E-qrT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NhV-54-mEj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -496,7 +496,7 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="bicycleRegisterBtnDidTap:" destination="N5p-ct-6ud" eventType="touchUpInside" id="nci-fA-vNb"/>
+                                    <action selector="btnBicycleRegisterAction:" destination="N5p-ct-6ud" eventType="touchUpInside" id="bHD-FU-vTx"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="당신의 자전거를 안전하게 보관하세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxN-zF-f0p">
@@ -613,7 +613,7 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="bicycleRemoveBtnDidTap:" destination="N5p-ct-6ud" eventType="touchUpInside" id="9JP-Ba-Xpn"/>
+                                    <action selector="btnBicycleRemoveAction:" destination="N5p-ct-6ud" eventType="touchUpInside" id="5rH-JV-2Ah"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -768,22 +768,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rock-You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bII-fo-2JN">
-                                <rect key="frame" x="20.000000000000007" y="67" width="103.66666666666669" height="31.666666666666671"/>
+                                <rect key="frame" x="19.999999999999993" y="67" width="96.333333333333314" height="25.666666666666671"/>
                                 <fontDescription key="fontDescription" name="PermanentMarker-Regular" family="Permanent Marker" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSe-Lo-1Fm">
-                                <rect key="frame" x="20" y="118.66666666666669" width="52" height="36"/>
+                                <rect key="frame" x="20" y="112.66666666666669" width="52" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k97-H5-Aqc">
-                                <rect key="frame" x="0.0" y="184.66666666666669" width="390" height="576.33333333333326"/>
+                                <rect key="frame" x="0.0" y="178.66666666666669" width="390" height="582.33333333333326"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5ws-sE-Mgf">
-                                        <rect key="frame" x="0.0" y="35" width="390" height="541.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="35" width="390" height="547.33333333333337"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="hJl-rl-UTE">
@@ -848,19 +848,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rock-You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Vp-xD-Ubc">
-                                <rect key="frame" x="20.000000000000007" y="56.999999999999993" width="97.666666666666686" height="25.666666666666664"/>
+                                <rect key="frame" x="20.000000000000007" y="56.999999999999993" width="97.666666666666686" height="31.666666666666664"/>
                                 <fontDescription key="fontDescription" name="PermanentMarker-Regular" family="Permanent Marker" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86a-pg-StD">
-                                <rect key="frame" x="20" y="102.66666666666667" width="136.33333333333334" height="36.000000000000014"/>
+                                <rect key="frame" x="20" y="108.66666666666667" width="136.33333333333334" height="36.000000000000014"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wes-ty-coe">
-                                <rect key="frame" x="0.0" y="168.66666666666669" width="390" height="682.33333333333326"/>
+                                <rect key="frame" x="0.0" y="174.66666666666669" width="390" height="676.33333333333326"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NlF-US-kyL">
                                         <rect key="frame" x="25" y="40" width="105" height="105"/>
@@ -878,7 +878,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W4K-ue-luS">
-                                        <rect key="frame" x="160" y="86" width="205" height="30"/>
+                                        <rect key="frame" x="160" y="86.000000000000028" width="205" height="30"/>
                                         <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="anh-wJ-41X"/>
