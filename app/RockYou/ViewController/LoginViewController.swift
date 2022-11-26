@@ -56,6 +56,8 @@ class LoginViewController: UIViewController {
     @objc func dismissKeyBord(){
         self.view.endEditing(true)
     }
+    
+    let db = Firestore.firestore()
 
     @IBAction func btnSubmitAction(_ sender: UIButton) {
         if txtUserId.text?.count == 0 {
@@ -67,43 +69,44 @@ class LoginViewController: UIViewController {
             // 텍스트필드 문자열에서 cleaned Data 추출
             let userName = txtUserId.text!.trimmingCharacters(in: .whitespacesAndNewlines) //whitespacesAndNewlines가 뭔지 알아보자ㅏ....
             let password = txtPassword.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            
-            // get user document
-            let db = Firestore.firestore()
-            let ref = db.collection("users").document(userName)
-            
-            ref.getDocument { (document, error) in
-                // 존재 한다면
-                if let document = document, document.exists {
-                    identification = userName
-                    guard let uid = document.get("uid") else { return }
-                    userid = uid as! String
-                    // 비밀번호 필드만 가져오기
-                    guard let property = document.get("password") else { return }
+                        
+            getUserData(userName: userName, password: password)
+        }
+    }
+        
+    func getUserData(userName: String, password: String){
+        let ref = db.collection("users").document(userName)
+        ref.getDocument { (document, error) in
+            // 존재 한다면
+            if let document = document, document.exists {
+                identification = userName
+                guard let uid = document.get("uid") else { return }
+                userid = uid as! String
+                // 비밀번호 필드만 가져오기
+                guard let property = document.get("password") else { return }
+                
+                // 비밀번호 같으면
+                if property as! String == password {
+                    // 메인뷰로 화면 전환
+                    let mainView = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController")
                     
-                    // 비밀번호 같으면
-                    if property as! String == password {
-                        // 메인뷰로 화면 전환
-                        let mainView = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController")
-                        
-                        // 뷰전환 애니메이션
-                        guard let window = self.view.window else { return }
-                        let transition = CATransition()
-                        transition.type = .reveal
-                            transition.duration = 0.3
-                            window.layer.add(transition, forKey: kCATransition)
-                        
-                        self.view.window?.rootViewController = mainView
-                        self.view.window?.makeKeyAndVisible()
-                    }else{
-                        self.txtPassword.text = ""
-                        self.ShowAlert(alertmsg: "비밀번호를 확인해주세요")
-                    }
+                    // 뷰전환 애니메이션
+                    guard let window = self.view.window else { return }
+                    let transition = CATransition()
+                    transition.type = .reveal
+                        transition.duration = 0.3
+                        window.layer.add(transition, forKey: kCATransition)
+                    
+                    self.view.window?.rootViewController = mainView
+                    self.view.window?.makeKeyAndVisible()
+                }else{
+                    self.txtPassword.text = ""
+                    self.ShowAlert(alertmsg: "비밀번호를 확인해주세요")
                 }
             }
         }
     }
-        
+    
     func ShowAlert(alertmsg: String) {
         // create the alert
         let alert = UIAlertController(title: nil, message: alertmsg, preferredStyle: UIAlertController.Style.alert)

@@ -76,22 +76,7 @@ class SignUpViewController: UIViewController {
             let email = txtEmail.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let phoneNumber = txtPhone.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                         
-            // user 생성
-            Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
-                if err != nil {
-                    self.ShowAlert(alertmsg: "Error creating user")
-                }
-                else{
-                    // user 데이터 생성 성공
-                    let db = Firestore.firestore()
-                    db.collection("users").document(userName).setData(["userName":userName, "password":password, "phoneNumber":phoneNumber, "uid":result!.user.uid]) { (error) in
-                        
-                        if error != nil {
-                            self.ShowAlert(alertmsg: "Error saving user data")
-                        }
-                    }
-                }
-            }
+            setUserData(userName: userName, password: password, email: email, phoneNumber: phoneNumber)
             
             // create the alert
             let alert = UIAlertController(title: nil, message: strAlertSubmit, preferredStyle: UIAlertController.Style.alert)
@@ -107,6 +92,25 @@ class SignUpViewController: UIViewController {
             
             // show the alert
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func setUserData(userName:String, password:String, email:String, phoneNumber:String){
+        // user 생성
+        Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
+            if err != nil {
+                self.ShowAlert(alertmsg: "Error creating user")
+            }
+            else{
+                // user 데이터 생성 성공
+                let db = Firestore.firestore()
+                db.collection("users").document(userName).setData(["userName":userName, "password":password, "phoneNumber":phoneNumber, "uid":result!.user.uid]) { (error) in
+                    
+                    if error != nil {
+                        self.ShowAlert(alertmsg: "Error saving user data")
+                    }
+                }
+            }
         }
     }
     

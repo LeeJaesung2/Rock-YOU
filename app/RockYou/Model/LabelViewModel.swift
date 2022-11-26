@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct LabelInfo {
+struct LabelData {
     let nickname: String
     let idnum: String
     let state: String
@@ -25,13 +25,13 @@ struct LabelInfo {
 
 // view model
 class LabelViewModel {
-    var labelInfoList: [LabelInfo] = []
+    var labelDataList: [LabelData] = []
 
     var countOfList: Int {
-        return labelInfoList.count
+        return labelDataList.count
     }
     
-    func labelInfo(at index: Int) -> LabelInfo {
-        return labelInfoList[index]
+    func labelInfo(at index: Int) -> LabelData {
+        return labelDataList[index]
     }
 }
