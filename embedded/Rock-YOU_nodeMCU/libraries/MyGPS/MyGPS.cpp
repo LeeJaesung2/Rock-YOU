@@ -1,6 +1,6 @@
 #include "MyGPS.h"
 
-ValueClass value;
+
 SoftwareSerial gss(GPS_RX_pin, GPS_TX_pin);
 
 void MyGPSClass::setGPSPin(){
@@ -23,13 +23,11 @@ void MyGPSClass::getGPSValue(){
         float flat, flon;
         unsigned long age;
         gps.f_get_position(&flat, &flon, &age);
-        value.flat = flat;
-        value.flon = flon;
         #if(DEBUG)
             Serial.print("LAT=");
-            Serial.print(value.flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flat, 6);
+            Serial.print(flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flat, 6);
             Serial.print(" LON=");
-            Serial.print(value.flon == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flon, 6);
+            Serial.print(flon == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flon, 6);
             Serial.println();
         #endif
     }

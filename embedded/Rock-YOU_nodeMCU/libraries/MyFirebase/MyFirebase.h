@@ -22,6 +22,13 @@ class MyFirebaseClass{
         FirebaseAuth auth; //here
         FirebaseConfig config; //here
         FirebaseJson content; //here
+        
+        typedef enum{
+            LONGITUDE,
+            LATITUDE,
+            LOCK,
+            STATE
+        } value;
 };
 
 
