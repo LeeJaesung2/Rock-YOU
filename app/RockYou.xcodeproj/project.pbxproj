@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F4F6D792932358400C41903 /* AlarmTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F6D782932358400C41903 /* AlarmTableModel.swift */; };
 		4F525D61290E75A6007A76FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F525D60290E75A6007A76FF /* GoogleService-Info.plist */; };
 		4F52F8182924CF700087758E /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F52F8172924CF700087758E /* AlarmViewController.swift */; };
 		4F52F81A2924CF7D0087758E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F52F8192924CF7D0087758E /* UserViewController.swift */; };
 		4F52F81C2924D9590087758E /* BicycleRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F52F81B2924D9590087758E /* BicycleRegisterViewController.swift */; };
 		4F5470BD28EFB1BD00C0F673 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */; };
+		4F65A91229322E65008AB1E7 /* LabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A91129322E65008AB1E7 /* LabelViewModel.swift */; };
 		4F9DB32F28F64C7700B2C338 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DB32E28F64C7700B2C338 /* MainViewController.swift */; };
 		4FF1ED1A28FC377300F5458D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1ED1928FC377300F5458D /* MapViewController.swift */; };
 		4FFF168028ED0514003ADFAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF167F28ED0514003ADFAA /* AppDelegate.swift */; };
@@ -27,11 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F4F6D782932358400C41903 /* AlarmTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableModel.swift; sourceTree = "<group>"; };
 		4F525D60290E75A6007A76FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F52F8172924CF700087758E /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		4F52F8192924CF7D0087758E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		4F52F81B2924D9590087758E /* BicycleRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleRegisterViewController.swift; sourceTree = "<group>"; };
 		4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4F65A91129322E65008AB1E7 /* LabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewModel.swift; sourceTree = "<group>"; };
 		4F9DB32E28F64C7700B2C338 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4FF1ED1928FC377300F5458D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4FFF167C28ED0514003ADFAA /* RockYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +98,15 @@
 			path = helper;
 			sourceTree = "<group>";
 		};
+		4F65A91029322E1F008AB1E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F65A91129322E65008AB1E7 /* LabelViewModel.swift */,
+				4F4F6D782932358400C41903 /* AlarmTableModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4FFF167328ED0514003ADFAA = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +131,7 @@
 				4FFF167F28ED0514003ADFAA /* AppDelegate.swift */,
 				4FFF168128ED0514003ADFAA /* SceneDelegate.swift */,
 				4F568BF628FF7FEF0092D287 /* helper */,
+				4F65A91029322E1F008AB1E7 /* Model */,
 				4F568BF528FF7FDA0092D287 /* View */,
 				4F568BF428FF7FBB0092D287 /* ViewController */,
 				4FFF168828ED0514003ADFAA /* Assets.xcassets */,
@@ -263,12 +277,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F52F8182924CF700087758E /* AlarmViewController.swift in Sources */,
+				4F4F6D792932358400C41903 /* AlarmTableModel.swift in Sources */,
 				4F52F81A2924CF7D0087758E /* UserViewController.swift in Sources */,
 				4F9DB32F28F64C7700B2C338 /* MainViewController.swift in Sources */,
 				4FFF168428ED0514003ADFAA /* LoginViewController.swift in Sources */,
 				4FFF168028ED0514003ADFAA /* AppDelegate.swift in Sources */,
 				4FFF169428ED1069003ADFAA /* WLITextField.swift in Sources */,
 				4FFF168228ED0514003ADFAA /* SceneDelegate.swift in Sources */,
+				4F65A91229322E65008AB1E7 /* LabelViewModel.swift in Sources */,
 				C7B44727292CF6E500B272A4 /* Marker.swift in Sources */,
 				4F52F81C2924D9590087758E /* BicycleRegisterViewController.swift in Sources */,
 				4F5470BD28EFB1BD00C0F673 /* SignUpViewController.swift in Sources */,
