@@ -8,15 +8,15 @@
 import UIKit
 
 struct LabelData {
-    let nickname: String
-    let idnum: String
+    let nickName: String
+    let idNum: String
     let state: String
     let viewColor: UIColor
     let labelColor: UIColor
     
-    init (nickname: String, idnum: String, state: String, viewColor: UIColor, labelColor: UIColor) {
-        self.nickname = nickname
-        self.idnum = idnum
+    init (nickName: String, idNum: String, state: String, viewColor: UIColor, labelColor: UIColor) {
+        self.nickName = nickName
+        self.idNum = idNum
         self.state = state
         self.viewColor = viewColor
         self.labelColor = labelColor
