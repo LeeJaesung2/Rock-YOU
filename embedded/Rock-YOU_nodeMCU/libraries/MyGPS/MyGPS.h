@@ -10,10 +10,15 @@
 
 class MyGPSClass{
     public:
-        //_________GPS________________
-        TinyGPS gps;
         void setGPSPin();
-        void getGPSValue();
+        GpSValue getGPSValue();
+    private:
+        TinyGPS gps;
+        typedef struct{
+            float latitude; //위도
+            float longitude; //경도
+        } GPSValue;
+        
 };
 
 

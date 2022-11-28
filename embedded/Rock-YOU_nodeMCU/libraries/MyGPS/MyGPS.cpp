@@ -9,8 +9,9 @@ void MyGPSClass::setGPSPin(){
 }
 
 /*get GPS value from GPS module*/
-void MyGPSClass::getGPSValue(){
+GPSValue MyGPSClass::getGPSValue(){
     bool newData = false;
+    GPSValue gpsValue;
     for (unsigned long start = millis(); millis() - start < 1000;){
         if(gss.available()){
             if (gps.encode(gss.read())){
@@ -31,5 +32,7 @@ void MyGPSClass::getGPSValue(){
             Serial.println();
         #endif
     }
-
+    gpsValue.latitude = flat;
+    gpsValue.longitude = flon;
+    return gpsValue;
 }

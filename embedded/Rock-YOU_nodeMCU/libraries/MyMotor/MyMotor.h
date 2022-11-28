@@ -10,13 +10,13 @@
 
 class MyMotorClass{
     public:
-    //_________servo motor________________
-    Servo mainServo;
-    Servo lockServo;
+        void setMotor();
+        bool unlockBicycle(bool lockState);
+        bool lockBicycle(bool lockState);
+    private:
+        Servo mainServo;
+        Servo lockServo;
 
-    void setMotor();
-    bool unlockBicycle(bool lockState);
-    bool lockBicycle(bool lockState);
 };
 
 

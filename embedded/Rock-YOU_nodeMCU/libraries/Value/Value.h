@@ -35,6 +35,11 @@ class ValueClass{
             STATE
         } value;
 
+        typedef struct{
+            float latitude; //위도
+            float longitude; //경도
+        } GPSValue;
+
         void initValue();
 };
 
