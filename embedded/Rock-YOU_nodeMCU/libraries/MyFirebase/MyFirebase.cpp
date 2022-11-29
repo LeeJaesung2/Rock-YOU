@@ -1,8 +1,6 @@
 #include "MyFirebase.h"
 #include <addons/TokenHelper.h>
 
-ValueClass Value;
-
 /*setting Firebase firestore*/
 void MyFirebaseClass::setFirebase(){
     // firebase key & auth
@@ -25,11 +23,11 @@ void MyFirebaseClass::updateFirebase(int value, int data){
     String jsonPath;
     String updateMask;
     switch(value){
-        case Value.LOCK:
+        case LOCK:
             jsonPath = "fields/lock/integerValue";
             updateMask = "lock";
             break;
-        case Value.STATE:
+        case STATE:
             jsonPath = "fields/state/integerValue";
             updateMask = "state";
             break;
@@ -51,11 +49,11 @@ void MyFirebaseClass::updateGPSFirebase(int value, float data){
     String jsonPath;
     String updateMask;
     switch(value){
-        case Value.LONGITUDE:
+        case LONGITUDE:
             jsonPath = "fields/GPS/geoPointValue/longitude";
             updateMask = "GPS";
             break;
-        case Value.LATITUDE:
+        case LATITUDE:
             jsonPath = "fields/GPS/geoPointValue/latitude";
             updateMask = "GPS";
             break;
