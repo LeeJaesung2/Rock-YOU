@@ -10,7 +10,7 @@
 class MyBluetoothClass{
     public:
         void setBLEPin();
-        bool getCmdFromBLE(bool lockState);
+        int getCmdFromBLE(int lockCmd);
         void sendCmdToBLE(bool lockState);
 };
 
