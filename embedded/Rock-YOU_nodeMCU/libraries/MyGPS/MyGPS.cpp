@@ -31,8 +31,8 @@ GPSValue MyGPSClass::getGPSValue(){
             Serial.print(flon == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flon, 6);
             Serial.println();
         #endif
+        gpsValue.latitude = flat;
+        gpsValue.longitude = flon;
     }
-    gpsValue.latitude = flat;
-    gpsValue.longitude = flon;
     return gpsValue;
 }

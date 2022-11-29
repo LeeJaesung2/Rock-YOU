@@ -13,13 +13,18 @@
 class ValueClass{
     public:
         //global variables
-        unsigned long sendDataPrevMillis; //last data send time
-        bool signupOK; //firebase login
-        bool lockState;
-        bool conn_bluetooth;
+        //unsigned long sendDataPrevMillis; //last data send time
+        //bool signupOK; //firebase login
+        //bool lockState;
+        //bool conn_bluetooth;
         //int pastvib; //sensing shock value  safe = 0, shock = 1
         int state;
         float flat, flon;
+
+        typedef enum{
+            CLOSE,
+            OPEN
+        } lockCmd;
 
         typedef enum {
             LOCKED,//lock
@@ -34,11 +39,6 @@ class ValueClass{
             LOCK,
             STATE
         } value;
-
-        typedef struct{
-            float latitude; //위도
-            float longitude; //경도
-        } GPSValue;
 
         void initValue();
 };
