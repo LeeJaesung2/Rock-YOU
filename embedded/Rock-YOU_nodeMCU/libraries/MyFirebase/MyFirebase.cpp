@@ -18,11 +18,11 @@ void MyFirebaseClass::setFirebase(){
 }
 
 /*update value to firebase firestore*/
-void MyFirebaseClass::updateFirebase(int value, int data){
+void MyFirebaseClass::updateFirebase(int updateValue, int data){
     String path = "bicycle/qf6r5zOcY4jXmmcniqX9";
     String jsonPath;
     String updateMask;
-    switch(value){
+    switch(updateValue){
         case LOCK:
             jsonPath = "fields/lock/integerValue";
             updateMask = "lock";
@@ -30,6 +30,9 @@ void MyFirebaseClass::updateFirebase(int value, int data){
         case STATE:
             jsonPath = "fields/state/integerValue";
             updateMask = "state";
+            break;
+        default:
+            Serial.println("Need to update state first");
             break;
     }
     content.clear();
@@ -44,11 +47,11 @@ void MyFirebaseClass::updateFirebase(int value, int data){
 }
 
 /*update GPS value to firebase firestore*/
-void MyFirebaseClass::updateGPSFirebase(int value, float data){
+void MyFirebaseClass::updateGPSFirebase(int updateValue, float data){
     String path = "bicycle/qf6r5zOcY4jXmmcniqX9";
     String jsonPath;
     String updateMask;
-    switch(value){
+    switch(updateValue){
         case LONGITUDE:
             jsonPath = "fields/GPS/geoPointValue/longitude";
             updateMask = "GPS";
@@ -56,6 +59,9 @@ void MyFirebaseClass::updateGPSFirebase(int value, float data){
         case LATITUDE:
             jsonPath = "fields/GPS/geoPointValue/latitude";
             updateMask = "GPS";
+            break;
+        default:
+            Serial.println("Need to update state first");
             break;
     }
     //content.clear();

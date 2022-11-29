@@ -20,6 +20,7 @@ class ValueClass{
         //int pastvib; //sensing shock value  safe = 0, shock = 1
         int state;
         float flat, flon;
+        GPSValue preGpsValue;
 
         typedef enum{
             CLOSE,
@@ -38,7 +39,7 @@ class ValueClass{
             LATITUDE,
             LOCK,
             STATE
-        } value;
+        } updateValue;
 
         void initValue();
 };

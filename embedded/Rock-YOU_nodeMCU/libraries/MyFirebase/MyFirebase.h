@@ -14,8 +14,8 @@
 class MyFirebaseClass{
     public:
         void setFirebase();
-        void updateFirebase(int value, int data);
-        void updateGPSFirebase(int value, float data);
+        void updateFirebase(int updateValue, int data);
+        void updateGPSFirebase(int updateValue, float data);
     private:
         //Define Firebase Data object
         FirebaseData fbdo; //here
@@ -28,7 +28,7 @@ class MyFirebaseClass{
             LATITUDE,
             LOCK,
             STATE
-        } value;
+        } updateValue;
 };
 
 
