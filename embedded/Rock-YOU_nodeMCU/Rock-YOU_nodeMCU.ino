@@ -26,36 +26,42 @@ void setup(){
 }
 
 void loop(){
-  // Value.lockState = Motor.unlockBicycle(Value.lockState);
-  // MyFirebase.updateFirebase(Value.LOCK, Value.lockState);
-  // Value.lockState = Motor.lockBicycle(Value.lockState);
-  // MyFirebase.updateFirebase(Value.LOCK, Value.lockState);
-
   //bluetooth check
   int lockCmd;
   lockCmd = BLE.getCmdFromBLE(lockCmd);
-  switch (lockCmd)
-  {
-  case Value.CLOSE:
-    Motor.lockBicycle();
-    Value.state = Value.LOCKED;
-    MyFirebase.updateFirebase(Value.STATE, Value.state);
-    break;
+  if(lockCmd!=-1){
+    switch (lockCmd)
+    {
+    case Value.CLOSE:
+      Motor.lockBicycle();
+      Value.state = Value.LOCKED;
+      BLE.sendCmdToBLE(Value.state);
+      MyFirebase.updateFirebase(Value.STATE, Value.state);
+      
+      break;
   
-  case Value.OPEN:
-    Motor.unlockBicycle();
-    Value.state = Value.DRIVE;
-    MyFirebase.updateFirebase(Value.STATE, Value.state);
-    break;
-  default:
-    break;
+    case Value.OPEN:
+      Motor.unlockBicycle();
+      Value.state = Value.DRIVE;
+      BLE.sendCmdToBLE(Value.state);
+      MyFirebase.updateFirebase(Value.STATE, Value.state);
+      break;
+    default:
+      Serial.println("invalid command");
+      break;
+    }
   }
 
   
-  GPSValue gpsValue;
-  gpsValue = GPS.getGPSValue();
-  if(/*gpsValue is change*/){
-
+  GPSValue gpsValue = GPS.getGPSValue();
+  if(gpsValue!=Value.preGpsValue||Value.preGpsValue){ //need to test
+    Value.preGpsValue = gpsValue;
+    MyFirebase.updateGPSFirebase(Value.LATITUDE, gpsValue.latitude);
+    MyFirebase.updateGPSFirebase(Value.LONGITUDE, gpsValue.longitude);
+    if(Value.state == Value.LOCKED){
+      Value.state = Value.STEEL;
+      MyFirebase.updateFirebase(Value.STATE, Value.state);
+    }
   }
   
 }

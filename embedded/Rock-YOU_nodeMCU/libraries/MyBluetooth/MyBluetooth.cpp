@@ -13,11 +13,12 @@ int MyBluetoothClass::getCmdFromBLE(int lockCmd){
     if(BTSerial.available()){
         lockCmd = BTSerial.read();
         Serial.write(lockCmd);
+        return lockCmd;
     }
-    return lockCmd;
+    return -1;
 }
 
 /*send commant to bluetooth module*/
-void MyBluetoothClass::sendCmdToBLE(bool lockState){
+void MyBluetoothClass::sendCmdToBLE(int lockState){
     BTSerial.write(lockState);
 }
