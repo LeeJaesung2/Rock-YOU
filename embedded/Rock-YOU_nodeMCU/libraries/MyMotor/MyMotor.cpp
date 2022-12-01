@@ -6,7 +6,7 @@ void MyMotorClass::setMotor(){
 }
 
 /*unlock using motor*/
-bool MyMotorClass::unlockBicycle(bool lockState){
+void MyMotorClass::unlockBicycle(){
     for(int posDegrees = 180; posDegrees >= 0; posDegrees--) {
         lockServo.write(posDegrees);
         delay(20);
@@ -15,12 +15,10 @@ bool MyMotorClass::unlockBicycle(bool lockState){
         mainServo.write(posDegrees);
         delay(20);
     }
-    lockState = true;
-    return lockState;
 }
 
 /*lock usgin motor*/
-bool MyMotorClass::lockBicycle(bool lockState){
+void MyMotorClass::lockBicycle(){
     for(int posDegrees = 0; posDegrees <= 270; posDegrees++) {
         mainServo.write(posDegrees);
         delay(20);
@@ -29,6 +27,4 @@ bool MyMotorClass::lockBicycle(bool lockState){
         lockServo.write(posDegrees);
         delay(20);
     }
-    lockState = false;
-    return lockState;
 }

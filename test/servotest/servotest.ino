@@ -1,6 +1,6 @@
 #include <ESP32_Servo.h>
 
-#define servoPin = 17
+#define servoPin 17
 
 Servo servo;
 

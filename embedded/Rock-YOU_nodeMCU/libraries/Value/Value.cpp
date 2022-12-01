@@ -8,4 +8,6 @@ void ValueClass::initValue(){
     //conn_bluetooth = false;
     //pastvib = 0;
     state = LOCK;
+    preGpsValue.latitude = 0;
+    preGpsValue.longitude = 0;
 }

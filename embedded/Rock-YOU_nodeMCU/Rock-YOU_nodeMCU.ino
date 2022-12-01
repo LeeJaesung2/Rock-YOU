@@ -34,7 +34,6 @@ void loop(){
     {
     case Value.CLOSE:
       Motor.lockBicycle();
-      Value.state = Value.LOCKED;
       BLE.sendCmdToBLE(Value.state);
       MyFirebase.updateFirebase(Value.STATE, Value.state);
       
@@ -42,7 +41,6 @@ void loop(){
   
     case Value.OPEN:
       Motor.unlockBicycle();
-      Value.state = Value.DRIVE;
       BLE.sendCmdToBLE(Value.state);
       MyFirebase.updateFirebase(Value.STATE, Value.state);
       break;
@@ -54,7 +52,11 @@ void loop(){
 
   
   GPSValue gpsValue = GPS.getGPSValue();
-  if(gpsValue!=Value.preGpsValue||Value.preGpsValue){ //need to test
+  float distance;
+  if(Value.preGpsValue.latitude!=0){
+    distance = GPS.gps.distance_between(gpsValue.latitude, gpsValue.longitude, Value.preGpsValue.latitude, Value.preGpsValue.longitude);
+  }
+  if(distance>=1||Value.preGpsValue.latitude==0){
     Value.preGpsValue = gpsValue;
     MyFirebase.updateGPSFirebase(Value.LATITUDE, gpsValue.latitude);
     MyFirebase.updateGPSFirebase(Value.LONGITUDE, gpsValue.longitude);
