@@ -9,6 +9,10 @@
 #define bicycleId "qf6r5zOcY4jXmmcniqX9" //PBMS identication key
 
 
+typedef struct{
+    float latitude; //위도
+    float longitude; //경도
+} GPSValue;
 
 class ValueClass{
     public:

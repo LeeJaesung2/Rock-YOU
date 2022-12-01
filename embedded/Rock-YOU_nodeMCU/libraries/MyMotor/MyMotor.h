@@ -11,8 +11,8 @@
 class MyMotorClass{
     public:
         void setMotor();
-        bool unlockBicycle(bool lockState);
-        bool lockBicycle(bool lockState);
+        void unlockBicycle();
+        void lockBicycle();
     private:
         Servo mainServo;
         Servo lockServo;
