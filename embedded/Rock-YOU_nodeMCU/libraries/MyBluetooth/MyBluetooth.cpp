@@ -9,9 +9,9 @@ void MyBluetoothClass::setBLEPin(){
 }
 
 /*get command fornm bluetooth module*/
-int MyBluetoothClass::getCmdFromBLE(int lockCmd){
+int MyBluetoothClass::getCmdFromBLE(){
     if(BTSerial.available()){
-        lockCmd = BTSerial.read();
+        int lockCmd = BTSerial.parseInt();
         Serial.write(lockCmd);
         return lockCmd;
     }

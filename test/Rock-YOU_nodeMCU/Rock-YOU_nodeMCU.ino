@@ -27,7 +27,8 @@ void setup(){
 
 void loop(){
   //bluetooth check
-  int lockCmd = BLE.getCmdFromBLE(lockCmd);//////
+  int lockCmd = BLE.getCmdFromBLE();
+  Serial.println(lockCmd);
   if(lockCmd!=-1){
     switch (lockCmd)
     {
@@ -36,6 +37,7 @@ void loop(){
       Value.state = Value.LOCKED;
       BLE.sendCmdToBLE(Value.state);
       MyFirebase.updateFirebase(Value.STATE, Value.state);
+      Serial.println(Value.state);
       break;
   
     case Value.OPEN:
@@ -43,6 +45,7 @@ void loop(){
       Value.state = Value.DRIVE;
       BLE.sendCmdToBLE(Value.state);
       MyFirebase.updateFirebase(Value.STATE, Value.state);
+      Serial.println(Value.state);
       break;
     default:
       Serial.println("invalid command");
@@ -51,7 +54,9 @@ void loop(){
   }
 
   
-  GPSValue gpsValue = GPS.getGPSValue();
+  GPSValue gpsValue; //= GPS.getGPSValue();
+  gpsValue.latitude = 11.1111;
+  gpsValue.longitude = 22.2222;
   float distance;
   if(Value.preGpsValue.latitude!=0){
     distance = GPS.gps.distance_between(gpsValue.latitude, gpsValue.longitude, Value.preGpsValue.latitude, Value.preGpsValue.longitude);
