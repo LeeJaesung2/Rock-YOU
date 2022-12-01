@@ -7,7 +7,7 @@ void ValueClass::initValue(){
     //lockState = false;
     //conn_bluetooth = false;
     //pastvib = 0;
-    state = LOCK;
+    state = DRIVE;
     preGpsValue.latitude = 0;
     preGpsValue.longitude = 0;
 }
