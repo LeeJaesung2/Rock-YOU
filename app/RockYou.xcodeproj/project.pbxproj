@@ -15,6 +15,8 @@
 		4F5470BD28EFB1BD00C0F673 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */; };
 		4F65A91229322E65008AB1E7 /* LabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A91129322E65008AB1E7 /* LabelViewModel.swift */; };
 		4F9DB32F28F64C7700B2C338 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DB32E28F64C7700B2C338 /* MainViewController.swift */; };
+		4FD174322936DC0400B53B75 /* RockYouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD174312936DC0400B53B75 /* RockYouTests.swift */; };
+		4FD174392938824400B53B75 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD174382938824400B53B75 /* AudioToolbox.framework */; };
 		4FF1ED1A28FC377300F5458D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1ED1928FC377300F5458D /* MapViewController.swift */; };
 		4FFF168028ED0514003ADFAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF167F28ED0514003ADFAA /* AppDelegate.swift */; };
 		4FFF168228ED0514003ADFAA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF168128ED0514003ADFAA /* SceneDelegate.swift */; };
@@ -28,6 +30,16 @@
 		C7B44727292CF6E500B272A4 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B44726292CF6E500B272A4 /* Marker.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4FD174332936DC0400B53B75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FFF167428ED0514003ADFAA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FFF167B28ED0514003ADFAA;
+			remoteInfo = RockYou;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4F4F6D782932358400C41903 /* AlarmTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableModel.swift; sourceTree = "<group>"; };
 		4F525D60290E75A6007A76FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -37,6 +49,9 @@
 		4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4F65A91129322E65008AB1E7 /* LabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewModel.swift; sourceTree = "<group>"; };
 		4F9DB32E28F64C7700B2C338 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4FD1742F2936DC0400B53B75 /* RockYouTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RockYouTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FD174312936DC0400B53B75 /* RockYouTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockYouTests.swift; sourceTree = "<group>"; };
+		4FD174382938824400B53B75 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4FF1ED1928FC377300F5458D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4FFF167C28ED0514003ADFAA /* RockYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FFF167F28ED0514003ADFAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,11 +70,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4FD1742C2936DC0400B53B75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4FFF167928ED0514003ADFAA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9F4AC603DA2FB08789A3D6CC /* Pods_RockYou.framework in Frameworks */,
+				4FD174392938824400B53B75 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,10 +130,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		4FD174302936DC0400B53B75 /* RockYouTests */ = {
+			isa = PBXGroup;
+			children = (
+				4FD174312936DC0400B53B75 /* RockYouTests.swift */,
+			);
+			path = RockYouTests;
+			sourceTree = "<group>";
+		};
 		4FFF167328ED0514003ADFAA = {
 			isa = PBXGroup;
 			children = (
 				4FFF167E28ED0514003ADFAA /* RockYou */,
+				4FD174302936DC0400B53B75 /* RockYouTests */,
 				4FFF167D28ED0514003ADFAA /* Products */,
 				80A3F2E095D870BDC441F20D /* Pods */,
 				5966EE89A09C5777BEA3C04D /* Frameworks */,
@@ -121,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				4FFF167C28ED0514003ADFAA /* RockYou.app */,
+				4FD1742F2936DC0400B53B75 /* RockYouTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,6 +178,7 @@
 		5966EE89A09C5777BEA3C04D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4FD174382938824400B53B75 /* AudioToolbox.framework */,
 				E07FF484EFDEB11990FB5286 /* Pods_RockYou.framework */,
 			);
 			name = Frameworks;
@@ -162,6 +196,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4FD1742E2936DC0400B53B75 /* RockYouTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FD174372936DC0400B53B75 /* Build configuration list for PBXNativeTarget "RockYouTests" */;
+			buildPhases = (
+				4FD1742B2936DC0400B53B75 /* Sources */,
+				4FD1742C2936DC0400B53B75 /* Frameworks */,
+				4FD1742D2936DC0400B53B75 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4FD174342936DC0400B53B75 /* PBXTargetDependency */,
+			);
+			name = RockYouTests;
+			productName = RockYouTests;
+			productReference = 4FD1742F2936DC0400B53B75 /* RockYouTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4FFF167B28ED0514003ADFAA /* RockYou */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4FFF169028ED0514003ADFAA /* Build configuration list for PBXNativeTarget "RockYou" */;
@@ -188,9 +240,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					4FD1742E2936DC0400B53B75 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 4FFF167B28ED0514003ADFAA;
+					};
 					4FFF167B28ED0514003ADFAA = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -210,11 +266,19 @@
 			projectRoot = "";
 			targets = (
 				4FFF167B28ED0514003ADFAA /* RockYou */,
+				4FD1742E2936DC0400B53B75 /* RockYouTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4FD1742D2936DC0400B53B75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4FFF167A28ED0514003ADFAA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,6 +336,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4FD1742B2936DC0400B53B75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FD174322936DC0400B53B75 /* RockYouTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4FFF167828ED0514003ADFAA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -294,6 +366,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4FD174342936DC0400B53B75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FFF167B28ED0514003ADFAA /* RockYou */;
+			targetProxy = 4FD174332936DC0400B53B75 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		4FFF168528ED0514003ADFAA /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -314,6 +394,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4FD174352936DC0400B53B75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MACOSX_DEPLOYMENT_TARGET = 12.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.geun0196.RockYouTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RockYou.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RockYou";
+			};
+			name = Debug;
+		};
+		4FD174362936DC0400B53B75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MACOSX_DEPLOYMENT_TARGET = 12.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.geun0196.RockYouTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RockYou.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RockYou";
+			};
+			name = Release;
+		};
 		4FFF168E28ED0514003ADFAA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -495,6 +617,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4FD174372936DC0400B53B75 /* Build configuration list for PBXNativeTarget "RockYouTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FD174352936DC0400B53B75 /* Debug */,
+				4FD174362936DC0400B53B75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4FFF167728ED0514003ADFAA /* Build configuration list for PBXProject "RockYou" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

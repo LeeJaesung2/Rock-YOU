@@ -674,7 +674,7 @@
                                         <rect key="frame" x="50" y="40" width="290" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAt-xx-aBI">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="290" height="50"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="3au-Sc-CEC"/>
@@ -686,22 +686,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="lockButtonDidTap:" destination="ztJ-yb-nCH" eventType="touchUpInside" id="LcH-yV-r3X"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktg-ly-Avz">
-                                                <rect key="frame" x="240" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="3zG-AY-zmb"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" image="arrow.2.squarepath" catalog="system">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="resetButtonDidTap:" destination="ztJ-yb-nCH" eventType="touchUpInside" id="yR1-4Y-rqk"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -751,7 +735,6 @@
                         <outlet property="backButton" destination="iD3-G5-Vvg" id="XTs-jM-hEv"/>
                         <outlet property="lockButton" destination="OAt-xx-aBI" id="NKM-6x-5ww"/>
                         <outlet property="mapView" destination="Y7N-yL-3CV" id="5Pj-O8-tNA"/>
-                        <outlet property="resetButton" destination="ktg-ly-Avz" id="rIk-xT-Rvx"/>
                         <outlet property="underbarView" destination="dfA-J5-Ml6" id="uUh-qO-huB"/>
                     </connections>
                 </viewController>
@@ -768,22 +751,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rock-You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bII-fo-2JN">
-                                <rect key="frame" x="19.999999999999993" y="67" width="96.333333333333314" height="25.666666666666671"/>
+                                <rect key="frame" x="20.000000000000007" y="67" width="103.66666666666669" height="31.666666666666671"/>
                                 <fontDescription key="fontDescription" name="PermanentMarker-Regular" family="Permanent Marker" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSe-Lo-1Fm">
-                                <rect key="frame" x="20" y="112.66666666666669" width="52" height="36"/>
+                                <rect key="frame" x="20" y="118.66666666666669" width="52" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k97-H5-Aqc">
-                                <rect key="frame" x="0.0" y="178.66666666666669" width="390" height="582.33333333333326"/>
+                                <rect key="frame" x="0.0" y="184.66666666666669" width="390" height="576.33333333333326"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5ws-sE-Mgf">
-                                        <rect key="frame" x="0.0" y="35" width="390" height="547.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="35" width="390" height="541.33333333333337"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="hJl-rl-UTE">
@@ -812,6 +795,15 @@
                                     <constraint firstAttribute="height" constant="100" id="I5T-JT-lm4"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCy-dg-vgQ">
+                                <rect key="frame" x="299" y="112" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="abc:" destination="qV9-Sk-RW8" eventType="touchUpInside" id="8JR-4d-RSK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vHr-W4-9cW"/>
                         <color key="backgroundColor" red="0.1764705926" green="0.1764705926" blue="0.1764705926" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1303,7 +1295,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.2.squarepath" catalog="system" width="128" height="88"/>
         <image name="bell" catalog="system" width="125" height="128"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
