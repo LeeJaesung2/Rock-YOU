@@ -27,7 +27,7 @@ void setup(){
 
 void loop(){
   //bluetooth check
-  int lockCmd = BLE.getCmdFromBLE(lockCmd);//////
+  int lockCmd = BLE.getCmdFromBLE();
   if(lockCmd!=-1){
     switch (lockCmd)
     {
@@ -57,7 +57,8 @@ void loop(){
     distance = GPS.gps.distance_between(gpsValue.latitude, gpsValue.longitude, Value.preGpsValue.latitude, Value.preGpsValue.longitude);
   }
   if(distance>=1||Value.preGpsValue.latitude==0){
-    Value.preGpsValue = gpsValue;
+    Value.preGpsValue.latitude = gpsValue.latitude;
+    Value.preGpsValue.longitude = gpsValue.longitude;
     MyFirebase.updateGPSFirebase(Value.LATITUDE, gpsValue.latitude);
     MyFirebase.updateGPSFirebase(Value.LONGITUDE, gpsValue.longitude);
     if(Value.state == Value.LOCKED){
