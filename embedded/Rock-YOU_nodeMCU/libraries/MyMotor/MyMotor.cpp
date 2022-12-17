@@ -19,11 +19,11 @@ void MyMotorClass::unlockBicycle(){
 
 /*lock usgin motor*/
 void MyMotorClass::lockBicycle(){
-    for(int posDegrees = 0; posDegrees <= 270; posDegrees++) {
+    for(int posDegrees = 0; posDegrees <= 180; posDegrees++) {
         mainServo.write(posDegrees);
         delay(20);
     }
-    for(int posDegrees = 0; posDegrees <= 270; posDegrees++) {
+    for(int posDegrees = 0; posDegrees <= 180; posDegrees++) {
         lockServo.write(posDegrees);
         delay(20);
     }
