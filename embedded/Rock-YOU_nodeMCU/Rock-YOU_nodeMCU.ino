@@ -56,7 +56,7 @@ void loop(){
   if(Value.preGpsValue.latitude!=0){
     distance = GPS.gps.distance_between(gpsValue.latitude, gpsValue.longitude, Value.preGpsValue.latitude, Value.preGpsValue.longitude);
   }
-  if(distance>=1||Value.preGpsValue.latitude==0){
+  if(distance>=4||Value.preGpsValue.latitude==0){
     Value.preGpsValue.latitude = gpsValue.latitude;
     Value.preGpsValue.longitude = gpsValue.longitude;
     MyFirebase.updateGPSFirebase(Value.LATITUDE, gpsValue.latitude);
