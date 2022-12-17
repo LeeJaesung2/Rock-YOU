@@ -3,6 +3,7 @@
 void MyMotorClass::setMotor(){
     mainServo.attach(MainGear_pin);
     lockServo.attach(LockGear_pin);
+    lockServo.write(0);
 }
 
 /*unlock using motor*/
