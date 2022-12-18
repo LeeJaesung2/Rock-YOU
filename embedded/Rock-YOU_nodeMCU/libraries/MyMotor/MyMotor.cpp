@@ -8,11 +8,11 @@ void MyMotorClass::setMotor(){
 
 /*unlock using motor*/
 void MyMotorClass::unlockBicycle(){
-    for(int posDegrees = 180; posDegrees >= 0; posDegrees--) {
+    for(int posDegrees = 180; posDegrees >= 0; posDegrees-=5) {
         lockServo.write(posDegrees);
         delay(20);
     }
-    for(int posDegrees = 180; posDegrees >= 0; posDegrees--) {
+    for(int posDegrees = 180; posDegrees >= 0; posDegrees-=5) {
         mainServo.write(posDegrees);
         delay(20);
     }
@@ -20,11 +20,11 @@ void MyMotorClass::unlockBicycle(){
 
 /*lock usgin motor*/
 void MyMotorClass::lockBicycle(){
-    for(int posDegrees = 0; posDegrees <= 180; posDegrees++) {
+    for(int posDegrees = 0; posDegrees <= 180; posDegrees+=5) {
         mainServo.write(posDegrees);
         delay(20);
     }
-    for(int posDegrees = 0; posDegrees <= 180; posDegrees++) {
+    for(int posDegrees = 0; posDegrees <= 180; posDegrees+=5) {
         lockServo.write(posDegrees);
         delay(20);
     }
