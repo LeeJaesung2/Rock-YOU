@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import AVFoundation
 import FirebaseAuth
 import FirebaseFirestore
 
-class MainViewController: UIViewController{
+class MainViewController: UIViewController, BluetoothSerialDelegate{
         
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
@@ -27,7 +28,7 @@ class MainViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+            
         bicycleRegBtn.layer.cornerRadius = 20
         bicycleRemoveBtn.layer.cornerRadius = 20
         
@@ -57,7 +58,7 @@ class MainViewController: UIViewController{
                         let viewColor = self.check.stateCheckViewChange(state: state)
                         let labelColor = self.check.stateCheckLabelColorChange(state: state)
                         let label = self.check.stateCheckLabelChange(state: state)
-                        let labelInfo = LabelData(nickname: bicycleNickname, idnum: idnum, state: label, viewColor: viewColor, labelColor: labelColor)
+                        let labelInfo = LabelData(nickName: bicycleNickname, idNum: idnum, state: label, viewColor: viewColor, labelColor: labelColor)
                         self.labelViewModel.labelDataList.append(labelInfo) //viewModel 전역변수
                         self.collectionView.reloadData() // 데이터 추가 후 컬렉션뷰 한번 리로딩 해줘서 바로 화면에 나타나도록
                     }
@@ -105,9 +106,7 @@ class MainViewController: UIViewController{
     @IBAction func bicycleRegisterBtnDidTap(_ sender: Any) {
         guard let regVC = self.storyboard?.instantiateViewController(withIdentifier: "BicycleRegisterViewController") as? BicycleRegisterViewController else { return }
         regVC.modalPresentationStyle = .fullScreen
-        print("이거는?")
         self.present(regVC, animated: true)
-        print("이게 안되는?")
     }
     
     // 삭제 버튼 클릭
@@ -157,6 +156,13 @@ class MainViewController: UIViewController{
         
         self.present(alert, animated: true)
     }
+    
+    
+    @IBAction func scanBtnDidTap(_ sender: Any) {
+        print("scan버튼 누름")
+        performSegue(withIdentifier: "ScanViewController", sender: nil)
+    }
+    
 }
 
 class StateCheckAndChange{
@@ -166,6 +172,7 @@ class StateCheckAndChange{
         } else if state == 1{ //주행중
             return UIColor.white
         } else {
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             return UIColor.red
         }
     }
@@ -198,8 +205,8 @@ class Cell: UICollectionViewCell {
     @IBOutlet weak var stateColorView: UIView!
     
     func update(info: LabelData) {
-        nicknameLabel.text = info.nickname
-        idnumLabel.text = info.idnum
+        nicknameLabel.text = info.nickName
+        idnumLabel.text = info.idNum
         stateLabel.text = info.state
         stateColorView.backgroundColor = info.viewColor
         stateLabel.textColor = info.labelColor
@@ -258,7 +265,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
         let labelInfo = labelViewModel.labelInfo(at: indexPath.item)
-        bicycleName = labelInfo.nickname
+        bicycleName = labelInfo.nickName
         
         let cell = collectionView.cellForItem(at: indexPath) as! Cell
         performSegue(withIdentifier: "showSegue", sender: cell)

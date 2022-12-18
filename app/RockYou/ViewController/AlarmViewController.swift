@@ -15,7 +15,7 @@ var state: Int = 0
 class AlarmViewController: UIViewController {
     
     @IBOutlet var mainView: UIView!
-    
+    @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var tableview: UITableView!
     
     var timer : Timer?
@@ -25,6 +25,8 @@ class AlarmViewController: UIViewController {
         
         mainView.layer.cornerRadius = 40
         mainView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        resetBtn.layer.cornerRadius = 18
         
         tableview.delegate = self
         tableview.dataSource = self
@@ -61,7 +63,7 @@ class AlarmViewController: UIViewController {
                         
                         // 도난 상태 & 등록되지 않은 데이터면 배열에 데이터 추가
                         if(state == 2 && index == nil){
-                            print("2 진입")
+                            UIDevice.vibrate() // 진동 원하는 곳에 메소드 이거 추가하면 됨
                             self.arr.append(documentId)
                             alarmModel.alarmDatas.append("자전거 : \(bicycleNickname)가 도난되었습니다.")
                         }
@@ -73,9 +75,8 @@ class AlarmViewController: UIViewController {
     }
     
     
-    @IBAction func abc(_ sender: Any) {
+    @IBAction func resetBtnDidTap(_ sender: Any) {
         tableview.reloadData()
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate) // 진동 원하는 곳에 메소드 이거 추가하면 됨
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -102,5 +103,11 @@ extension AlarmViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
-    
+}
+
+extension UIDevice {
+
+    static func vibrate() {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    }
 }

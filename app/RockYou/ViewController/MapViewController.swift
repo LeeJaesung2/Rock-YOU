@@ -4,13 +4,14 @@ import MapKit
 import CoreLocation
 import FirebaseFirestore
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, BluetoothSerialDelegate{
     
     var bicycleNicknameOfCell : String = ""
 
     // 하단바 아울렛
     @IBOutlet weak var underbarView: UIView!
     @IBOutlet weak var lockButton: UIButton!
+    @IBOutlet weak var openButton: UIButton!
     
     // 뒤로가기 아울렛
     @IBOutlet weak var backButton: UIButton!
@@ -26,12 +27,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         // 하단 바 레이아웃
         underbarView.layer.cornerRadius = 40
         underbarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         lockButton.layer.cornerRadius = 25
-        
+        openButton.layer.cornerRadius = 25
         backButton.layer.cornerRadius = 18
         
         //앱 강제 종료 해도 맵에서 오류 안나게 세팅
@@ -75,8 +76,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     //로그인한 유저의 uid와 클릭한 셀의 바이크별명에 대한 데이터 불러오기
                     if(documentUid == userid && bicycleNickname == self.bicycleNicknameOfCell){
                         print("\(document.documentID) => \(document.data())")
-                        let aaa = document.get("gps")
-                        let point = aaa as! GeoPoint
+                        let aaa = document.get("GPS")
+                        guard let point = aaa as? GeoPoint else {return}
                         self.latitude = point.latitude
                         self.longitude = point.longitude
                     }
@@ -104,9 +105,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.addAnnotation(annotation)
     }
     
-    
+    // 잠금 0번
     @IBAction func lockButtonDidTap(_ sender: Any) {
         print("잠금")
+        if !serial.bluetoothIsReady{
+            print("시리얼 준비 안됨")
+            return
+        }
+        
+        serial.delegate = self
+        serial.sendMessageToDevice("1")
+    }
+    
+    // 열림 1번
+    @IBAction func openButtonDidTap(_ sender: Any) {
+        print("열림")
+        if !serial.bluetoothIsReady{
+            print("시리얼 준비 안됨")
+            return
+        }
+            
+        serial.delegate = self
+        serial.sendMessageToDevice("0")
     }
     
     @IBAction func backButtonDidTap(_ sender: Any) {
@@ -114,3 +134,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         dismiss(animated: true)
     }
 }
+
+
+
+//0번 잠구기
+// 1번 헤제
+
+
