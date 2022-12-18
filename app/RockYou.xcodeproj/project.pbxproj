@@ -14,6 +14,9 @@
 		4F52F81C2924D9590087758E /* BicycleRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F52F81B2924D9590087758E /* BicycleRegisterViewController.swift */; };
 		4F5470BD28EFB1BD00C0F673 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */; };
 		4F65A91229322E65008AB1E7 /* LabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A91129322E65008AB1E7 /* LabelViewModel.swift */; };
+		4F78590D294EFFC900A8D5F0 /* BluetoothSerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F78590C294EFFC900A8D5F0 /* BluetoothSerial.swift */; };
+		4F78590F294F016B00A8D5F0 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F78590E294F016B00A8D5F0 /* ScanViewController.swift */; };
+		4F785911294F01A200A8D5F0 /* ScanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F785910294F01A200A8D5F0 /* ScanTableViewCell.swift */; };
 		4F9DB32F28F64C7700B2C338 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DB32E28F64C7700B2C338 /* MainViewController.swift */; };
 		4FD174322936DC0400B53B75 /* RockYouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD174312936DC0400B53B75 /* RockYouTests.swift */; };
 		4FD174392938824400B53B75 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD174382938824400B53B75 /* AudioToolbox.framework */; };
@@ -48,6 +51,9 @@
 		4F52F81B2924D9590087758E /* BicycleRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleRegisterViewController.swift; sourceTree = "<group>"; };
 		4F5470BC28EFB1BD00C0F673 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4F65A91129322E65008AB1E7 /* LabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewModel.swift; sourceTree = "<group>"; };
+		4F78590C294EFFC900A8D5F0 /* BluetoothSerial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothSerial.swift; sourceTree = "<group>"; };
+		4F78590E294F016B00A8D5F0 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		4F785910294F01A200A8D5F0 /* ScanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanTableViewCell.swift; sourceTree = "<group>"; };
 		4F9DB32E28F64C7700B2C338 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4FD1742F2936DC0400B53B75 /* RockYouTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RockYouTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FD174312936DC0400B53B75 /* RockYouTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockYouTests.swift; sourceTree = "<group>"; };
@@ -99,6 +105,7 @@
 				4F52F8172924CF700087758E /* AlarmViewController.swift */,
 				4F52F8192924CF7D0087758E /* UserViewController.swift */,
 				4F52F81B2924D9590087758E /* BicycleRegisterViewController.swift */,
+				4F78590E294F016B00A8D5F0 /* ScanViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -117,6 +124,8 @@
 				4FFF169328ED1069003ADFAA /* WLITextField.swift */,
 				C7B44726292CF6E500B272A4 /* Marker.swift */,
 				4FFFCD1229313501004857A5 /* PermanentMarker-Regular.ttf */,
+				4F78590C294EFFC900A8D5F0 /* BluetoothSerial.swift */,
+				4F785910294F01A200A8D5F0 /* ScanTableViewCell.swift */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -350,6 +359,7 @@
 			files = (
 				4F52F8182924CF700087758E /* AlarmViewController.swift in Sources */,
 				4F4F6D792932358400C41903 /* AlarmTableModel.swift in Sources */,
+				4F78590F294F016B00A8D5F0 /* ScanViewController.swift in Sources */,
 				4F52F81A2924CF7D0087758E /* UserViewController.swift in Sources */,
 				4F9DB32F28F64C7700B2C338 /* MainViewController.swift in Sources */,
 				4FFF168428ED0514003ADFAA /* LoginViewController.swift in Sources */,
@@ -357,9 +367,11 @@
 				4FFF169428ED1069003ADFAA /* WLITextField.swift in Sources */,
 				4FFF168228ED0514003ADFAA /* SceneDelegate.swift in Sources */,
 				4F65A91229322E65008AB1E7 /* LabelViewModel.swift in Sources */,
+				4F785911294F01A200A8D5F0 /* ScanTableViewCell.swift in Sources */,
 				C7B44727292CF6E500B272A4 /* Marker.swift in Sources */,
 				4F52F81C2924D9590087758E /* BicycleRegisterViewController.swift in Sources */,
 				4F5470BD28EFB1BD00C0F673 /* SignUpViewController.swift in Sources */,
+				4F78590D294EFFC900A8D5F0 /* BluetoothSerial.swift in Sources */,
 				4FF1ED1A28FC377300F5458D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,6 +570,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GX4PLU9378;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RockYou/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
@@ -590,6 +603,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GX4PLU9378;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RockYou/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";

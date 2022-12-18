@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
@@ -33,9 +34,7 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
     
     @IBOutlet weak var txtNumberOfLocker: WLITextField!
     @IBOutlet weak var txtNicknameBicycle: WLITextField!
-    
-    @IBOutlet weak var nextBtn: UIButton!
-    
+        
     var viewFlag = 1
     
     // 숫자 1 레이블
@@ -78,11 +77,11 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         mainView.layer.cornerRadius = 40
         mainView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        nextBtn.layer.cornerRadius = 20
+        nextButton.layer.cornerRadius = 20
         
         progressBarInit()
         
@@ -195,6 +194,8 @@ class BicycleRegisterViewController: UIViewController, WLITextFieldDelegate {
             self.dismiss(animated: true)
         }
     }
+    
+    
     
     func ShowAlert(alertmsg: String) {
         // create the alert
