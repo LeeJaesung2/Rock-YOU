@@ -27,14 +27,14 @@ class ValueClass{
         GPSValue preGpsValue;
 
         typedef enum{
-            CLOSE,
-            OPEN
+            OPEN,
+            CLOSE
         } lockCmd;
 
         typedef enum {
+            DRIVE,
             LOCKED,//lock
             //SHOCK,
-            DRIVE,//drive
             STEEL//steel
         } bicycleState;
 
