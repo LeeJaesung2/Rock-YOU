@@ -4,8 +4,8 @@
 #include "Value.h"
 
 //_________wifi________________
-#define WIFI_SSID "Jaesung’s iPhone"
-#define WIFI_PASSWORD "87654321"
+#define WIFI_SSID "SJ's iPhone"
+#define WIFI_PASSWORD "1234567890"
 
 class MyWifiClass{
     public:
