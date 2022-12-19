@@ -523,6 +523,11 @@
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
+                                        <view key="backgroundView" contentMode="scaleToFill" id="lz6-t0-s8F">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="496"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </view>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="eeW-Ux-nQQ" customClass="Cell" customModule="RockYou" customModuleProvider="target">
                                                 <rect key="frame" x="22" y="20" width="346" height="111"/>
@@ -590,14 +595,15 @@
                                         </connections>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sj3-ht-MYW">
-                                        <rect key="frame" x="280" y="396" width="100" height="40"/>
+                                        <rect key="frame" x="238" y="396" width="130" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="O3w-ec-mVo"/>
-                                            <constraint firstAttribute="width" constant="100" id="Sh8-z7-yu5"/>
+                                            <constraint firstAttribute="width" constant="130" id="Sh8-z7-yu5"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="블루투스 등록">
+                                        <state key="normal" title="주변기기 검색">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -609,7 +615,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="FGi-yE-Mgv" firstAttribute="top" secondItem="eEE-h9-EUD" secondAttribute="top" constant="-50" id="9WM-mg-Ztt"/>
-                                    <constraint firstAttribute="trailing" secondItem="sj3-ht-MYW" secondAttribute="trailing" constant="10" id="Wfx-OU-xg6"/>
+                                    <constraint firstAttribute="trailing" secondItem="sj3-ht-MYW" secondAttribute="trailing" constant="22" id="Wfx-OU-xg6"/>
                                     <constraint firstAttribute="bottom" secondItem="sj3-ht-MYW" secondAttribute="bottom" constant="10" id="tTy-5p-s3M"/>
                                 </constraints>
                             </view>
@@ -618,7 +624,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14p-Wb-kZM">
-                                <rect key="frame" x="294" y="195" width="80" height="40"/>
+                                <rect key="frame" x="287" y="195" width="80" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="2rL-JU-LkN"/>
@@ -642,7 +648,7 @@
                             <constraint firstItem="8U4-d7-mtK" firstAttribute="top" secondItem="UxN-zF-f0p" secondAttribute="bottom" constant="25" id="AHA-Ro-ROC"/>
                             <constraint firstItem="14p-Wb-kZM" firstAttribute="centerY" secondItem="8U4-d7-mtK" secondAttribute="centerY" id="Cxc-ta-A98"/>
                             <constraint firstItem="jgh-aV-SoM" firstAttribute="bottom" secondItem="FGi-yE-Mgv" secondAttribute="bottom" id="H8A-Xq-Ln0"/>
-                            <constraint firstItem="jgh-aV-SoM" firstAttribute="trailing" secondItem="14p-Wb-kZM" secondAttribute="trailing" constant="16" id="KtX-9i-wd3"/>
+                            <constraint firstItem="jgh-aV-SoM" firstAttribute="trailing" secondItem="14p-Wb-kZM" secondAttribute="trailing" constant="23" id="KtX-9i-wd3"/>
                             <constraint firstItem="UxN-zF-f0p" firstAttribute="top" secondItem="Vlx-YH-YbM" secondAttribute="bottom" constant="20" id="MQw-Ne-GFV"/>
                             <constraint firstAttribute="bottom" secondItem="P2w-pH-TDG" secondAttribute="bottom" constant="-20" id="Pvt-jD-SDY"/>
                             <constraint firstItem="eEE-h9-EUD" firstAttribute="top" secondItem="8U4-d7-mtK" secondAttribute="bottom" constant="80" id="Qo6-Pa-egO"/>
@@ -665,12 +671,13 @@
                         <outlet property="bicycleRegBtn" destination="8U4-d7-mtK" id="4KC-HB-fi4"/>
                         <outlet property="bicycleRemoveBtn" destination="14p-Wb-kZM" id="9bF-TJ-mCf"/>
                         <outlet property="collectionView" destination="FGi-yE-Mgv" id="9KO-9P-GMi"/>
+                        <outlet property="scanBtn" destination="sj3-ht-MYW" id="xUw-pA-ebm"/>
                         <segue destination="ztJ-yb-nCH" kind="show" identifier="showSegue" id="029-0I-EMa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JML-wG-ciT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2185" y="-294"/>
+            <point key="canvasLocation" x="2184.6153846153848" y="-294.31279620853081"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="0xj-X8-Ttw">
@@ -1336,7 +1343,7 @@
         <!--Scan View Controller-->
         <scene sceneID="aFz-v5-4Bj">
             <objects>
-                <viewController storyboardIdentifier="ScanViewController" id="M0t-gW-WGN" customClass="ScanViewController" customModule="BluetoothSwitch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScanViewController" id="M0t-gW-WGN" customClass="ScanViewController" customModule="RockYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fhk-zL-kJO">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1345,7 +1352,7 @@
                                 <rect key="frame" x="0.0" y="47" width="390" height="740"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScanTableViewCell" rowHeight="65" id="cQa-Jx-h7y" customClass="ScanTableViewCell" customModule="BluetoothSwitch" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScanTableViewCell" rowHeight="65" id="cQa-Jx-h7y" customClass="ScanTableViewCell" customModule="RockYou" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="390" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cQa-Jx-h7y" id="lpA-Db-gVT">

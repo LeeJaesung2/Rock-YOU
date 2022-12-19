@@ -105,7 +105,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.addAnnotation(annotation)
     }
     
-    // 잠금 0번
+    // 잠금 1번
     @IBAction func lockButtonDidTap(_ sender: Any) {
         print("잠금")
         if !serial.bluetoothIsReady{
@@ -117,7 +117,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         serial.sendMessageToDevice("1")
     }
     
-    // 열림 1번
+    // 주행 = 열림 0번
     @IBAction func openButtonDidTap(_ sender: Any) {
         print("열림")
         if !serial.bluetoothIsReady{
@@ -134,10 +134,4 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         dismiss(animated: true)
     }
 }
-
-
-
-//0번 잠구기
-// 1번 헤제
-
 
