@@ -26,11 +26,14 @@ class MainViewController: UIViewController, BluetoothSerialDelegate{
     @IBOutlet weak var bicycleRegBtn: UIButton!
     @IBOutlet weak var bicycleRemoveBtn: UIButton!
     
+    @IBOutlet weak var scanBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
             
         bicycleRegBtn.layer.cornerRadius = 20
         bicycleRemoveBtn.layer.cornerRadius = 20
+        scanBtn.layer.cornerRadius = 20
         
         refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
         collectionView.alwaysBounceVertical = true
@@ -167,9 +170,9 @@ class MainViewController: UIViewController, BluetoothSerialDelegate{
 
 class StateCheckAndChange{
     func stateCheckViewChange(state : Int) -> UIColor{
-        if state == 0{ //잠금중
+        if state == 1{ //잠금중
             return UIColor.yellow
-        } else if state == 1{ //주행중
+        } else if state == 0{ //주행중
             return UIColor.white
         } else {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
@@ -178,9 +181,9 @@ class StateCheckAndChange{
     }
     
     func stateCheckLabelColorChange(state : Int) -> UIColor{
-        if state == 0{ //잠금중
+        if state == 1{ //잠금중
             return UIColor.black
-        } else if state == 1{ //주행중
+        } else if state == 0{ //주행중
             return UIColor.black
         } else {
             return UIColor.red
@@ -188,9 +191,9 @@ class StateCheckAndChange{
     }
     
     func stateCheckLabelChange(state : Int) -> String{
-        if state == 0{ //잠금중
+        if state == 1{ //잠금중
             return "잠금중"
-        } else if state == 1{ //주행중
+        } else if state == 0{ //주행중
             return "주행중"
         } else {
             return "도난!!"
