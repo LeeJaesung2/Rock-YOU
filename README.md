@@ -45,4 +45,4 @@ int main void(){
 
 [Naver][naver_url]
 
-[naver_url] : www.naver.com
+[naver_url]: www.naver.com
