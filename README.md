@@ -43,6 +43,7 @@ int main void(){
 ***
 ---
 
-Link: [Google][https://google.com]
+Link: [Google][googlelink]
+[googlelink]: https://google.com 
 
 
