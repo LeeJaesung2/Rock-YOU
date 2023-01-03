@@ -23,3 +23,12 @@ this is nomal block
     this is code block
     
 end code blcok
+
+
+<pre>
+<code>
+int main void(){
+    return 0;
+}
+</code>
+</pre>
