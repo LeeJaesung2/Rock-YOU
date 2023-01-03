@@ -43,6 +43,6 @@ int main void(){
 ***
 ---
 
-[Naver][naver url]
+[Naver][naver_url]
 
-[naver url] : www.naver.com
+[naver_url] : www.naver.com
