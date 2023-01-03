@@ -34,8 +34,8 @@ int main void(){
 </pre>
 
 
-'''
+```
 int main void(){
     return 0;
 }
-'''
+```
