@@ -43,8 +43,6 @@ int main void(){
 ***
 ---
 
-Link: [Google][googlelink]
+[Naver][naver url]
 
-[googlelink]: https://google.com
-
-
+[naver url] : www.naver.com
