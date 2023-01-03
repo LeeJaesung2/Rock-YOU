@@ -12,12 +12,12 @@ Personal Bicycle Management System(PBMS)
 2. second 
 3. third
 
-* hi
-+ mmm
-- eifw
-- dd
+* 1
++ 2
+- 3
+- 4
 
-* dih
-  +ghi
-    -hi
-    -hi
+
+this is nomal block
+  this is code block
+end code block
