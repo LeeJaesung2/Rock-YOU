@@ -32,3 +32,10 @@ int main void(){
 }
 </code>
 </pre>
+
+
+'''
+int main void(){
+    return 0;
+}
+'''
