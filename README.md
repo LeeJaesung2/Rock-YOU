@@ -2,9 +2,9 @@
 Personal Bicycle Management System(PBMS)
 
 
-#hearder 1
-##header 2
-###header 3
+# hearder 1
+## header 2
+### header 3
 
 
-#######header 7?
+####### header 7?
